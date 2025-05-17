@@ -1,0 +1,18 @@
+# PHP / general
+/vendor/
+/node_modules/
+*.log
+*.cache
+*.tmp
+
+# IDE stuff
+.vscode/
+.idea/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+config.php        # contains DB password – keep local only!
+.env
