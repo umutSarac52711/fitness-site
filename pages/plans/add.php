@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
 <h1 class="h3 mb-3">New Membership Plan</h1>
@@ -71,4 +72,4 @@ require_once BASE_PATH . '/templates/header.php';
 </form>
 
 
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/script.php';?>

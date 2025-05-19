@@ -1,7 +1,8 @@
 <?php
 $page_title = "Blog Details | Fitness Site";
 require_once '../../config.php';          
-require_once '../templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header.php';
 ?>
 
 <!-- Blog Details Hero Section Begin -->
@@ -182,4 +183,5 @@ require_once '../templates/header.php';
     </section>
     <!-- Blog Details Section End -->
 
-    <?php require_once BASE_PATH . '/templates/footer.php'; ?>
+    <?php require_once BASE_PATH . '/templates/footer.php'; 
+require_once BASE_PATH . '/templates/script.php';?>

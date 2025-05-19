@@ -42,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $page_title = 'Edit User';
-require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
 <h1 class="h3 mb-4">Edit User #<?= $id ?></h1>
@@ -86,3 +87,5 @@ require_once BASE_PATH . '/templates/header.php';
   <button class="btn btn-primary">Save Changes</button>
   <a href="<?= BASE_URL ?>/pages/users/list.php" class="btn btn-secondary">Cancel</a>
 </form>
+
+<?php require_once BASE_PATH . '/templates/script.php';?>

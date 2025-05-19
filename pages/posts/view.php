@@ -14,7 +14,8 @@ $post = $stmt->fetch();
 if (!$post) die('Post not found');
 
 $page_title = 'View Post';
-require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
 <div class="container mt-4">
@@ -44,4 +45,4 @@ require_once BASE_PATH . '/templates/header.php';
   <a href="<?= BASE_URL ?>/pages/posts/list.php" class="btn btn-secondary">Back to Posts</a>
 </div>
 
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/script.php';?>

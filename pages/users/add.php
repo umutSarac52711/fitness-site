@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // 7) Page metadata + header
 $page_title = 'Add User';
-require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
 <h1 class="h3 mb-4">Create New User</h1>
@@ -75,7 +76,7 @@ require_once BASE_PATH . '/templates/header.php';
   <a href="<?= BASE_URL ?>/pages/users/list.php" class="btn btn-secondary ms-2">Cancel</a>
 </form>
 
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/script.php';?>
 
 <script>
 // Bootstrap client-side validation

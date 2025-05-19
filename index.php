@@ -1,6 +1,7 @@
 <?php
 $page_title = "Home | Fitness Site";
 require_once __DIR__ . '../config.php';          // DB not used yet, but keep it consistent
+require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 ?>
 
@@ -349,4 +350,5 @@ require_once BASE_PATH . '/templates/header.php';
     </section>
     <!-- Team Section End -->
 
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/footer.php'; 
+require_once BASE_PATH . '/templates/script.php';?>

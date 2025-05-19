@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $page_title = 'Delete Testimonial';
-require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
 <h1 class="h4">Delete Testimonial #<?= $id ?>?</h1>
@@ -30,4 +31,4 @@ require_once BASE_PATH . '/templates/header.php';
   <a href="<?= BASE_URL ?>/pages/testimonials/list.php" class="btn btn-secondary">Cancel</a>
 </form>
 
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/script.php';?>

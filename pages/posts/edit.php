@@ -37,7 +37,8 @@ $post = $stmt->fetch();
 if (!$post) die('Post not found');
 
 $page_title = 'Edit Post';
-require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
 <h1 class="h3 mb-3">Edit Post #<?= $id ?></h1>
@@ -80,4 +81,4 @@ require_once BASE_PATH . '/templates/header.php';
   <a href="<?= BASE_URL ?>/pages/posts/list.php" class="btn btn-secondary">Cancel</a>
 </form>
 
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/script.php';?>

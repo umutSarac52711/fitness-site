@@ -26,6 +26,8 @@ require_once '../../config.php';
 
 
 <?php 
+require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 require_once BASE_PATH . '/index.php';
-require_once BASE_PATH . '/templates/footer.php'; ?>
+require_once BASE_PATH . '/templates/footer.php'; 
+require_once BASE_PATH . '/templates/script.php';?>

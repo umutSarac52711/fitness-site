@@ -1,6 +1,7 @@
 <?php
 $page_title = "Blog | Fitness Site";
 require_once '../../config.php';          
+require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 require_once BASE_PATH . '/templates/breadcrumb.php';
 ?>
@@ -176,4 +177,5 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
     </section>
     <!-- Blog Section End -->
 
-<?php require_once BASE_PATH . '/templates/footer.php';?>
+<?php require_once BASE_PATH . '/templates/footer.php';
+require_once BASE_PATH . '/templates/script.php';?>

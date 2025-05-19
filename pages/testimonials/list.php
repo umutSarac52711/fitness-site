@@ -11,43 +11,51 @@ $page_title = 'Classes';
 $stmt = $pdo->query('SELECT * FROM classes ORDER BY id DESC');
 $classes = $stmt->fetchAll();
 
-require_once BASE_PATH . '/templates/header.php';
+
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-  <h1 class="h3">Testimonials</h1>
-  <a href="<?= BASE_URL ?>/pages/testimonials/add.php" class="btn btn-primary">+ New Testimonial</a>
+<div class="container py-4">
+  <div class="card shadow-sm mb-4">
+    <div class="card-body pb-0">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">Testimonials</h1>
+        <a href="<?= BASE_URL ?>/pages/testimonials/add.php" class="btn btn-primary">+ New Testimonial</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Rating</th>
+              <th>Quote</th>
+              <th>Created At</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($testimonials as $t): ?>
+              <tr>
+                <td><?= $t['id'] ?></td>
+                <td><?= htmlspecialchars($t['user_id']) ?></td>
+                <td><?= htmlspecialchars($t['rating']) ?></td>
+                <td><?= htmlspecialchars($t['quote']) ?></td>
+                <td><?= htmlspecialchars($t['created_at']) ?></td>
+                <td><?= htmlspecialchars($t['status']) ?></td>
+                <td>
+                  <a href="<?= BASE_URL ?>/pages/testimonials/edit.php?id=<?= $t['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                  <a href="<?= BASE_URL ?>/pages/testimonials/delete.php?id=<?= $t['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this testimonial?');">Del</a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>User ID</th>
-      <th>Rating</th>
-      <th>Quote</th>
-      <th>Created At</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($testimonials as $t): ?>
-      <tr>
-        <td><?= $t['id'] ?></td>
-        <td><?= htmlspecialchars($t['user_id']) ?></td>
-        <td><?= htmlspecialchars($t['rating']) ?></td>
-        <td><?= htmlspecialchars($t['quote']) ?></td>
-        <td><?= htmlspecialchars($t['created_at']) ?></td>
-        <td><?= htmlspecialchars($t['status']) ?></td>
-        <td>
-          <a href="<?= BASE_URL ?>/pages/testimonials/edit.php?id=<?= $t['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
-          <a href="<?= BASE_URL ?>/pages/testimonials/delete.php?id=<?= $t['id'] ?>" class="btn btn-sm btn-danger"
-             onclick="return confirm('Delete this testimonial?');">Del</a>
-        </td>
-      </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/script.php';?>

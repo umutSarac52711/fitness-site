@@ -1,42 +1,3 @@
-<?php
-/* templates/header.php */
-if (!isset($page_title)) { $page_title = 'Fitness Site'; }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title><?= htmlspecialchars($page_title) ?></title>
-    <meta name="description" content="Gym Template">
-    <meta name="keywords" content="Gym, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Template</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css" type="text/css">
-
-  <!-- Additional Styling -->
-  <link href="<?= BASE_URL ?>/assets/css/custom.css" rel="stylesheet">
-</head>
-<body>
-
-<!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
 
     <!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>
@@ -54,7 +15,7 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
             <ul>
                 <li><a href="<?= BASE_URL ?>/index.php">Home</a></li>
                 <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/static/classes.php">Classes</a></li>
+                <li><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
                 <li><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
                 <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
                 <li><a href="#">Pages</a>
@@ -70,8 +31,18 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
                 </li>
                 <li><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
                 
-                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role']==='admin'): ?>
-                <li><a href="<?= BASE_URL ?>/pages/plans/list.php">Admin · Plans</a></li>
+                <?php if (empty($_SESSION['user'])): ?>
+                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/login.php">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/register.php">Register</a></li>
+                <?php else: ?>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                    <?= htmlspecialchars($_SESSION['user']['name']) ?>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                    </ul>
+                  </li>
                 <?php endif; ?>
 
             </ul>
@@ -117,6 +88,20 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
                                 </ul>
                             </li>
                             <li><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
+
+                            <?php if (empty($_SESSION['user'])): ?>
+                                <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/login.php">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/register.php">Register</a></li>
+                            <?php else: ?>
+                                <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                                <?= htmlspecialchars($_SESSION['user']['name']) ?>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                                </ul>
+                              </li>
+                            <?php endif; ?>
                         </ul>
                     </nav>
                 </div>
@@ -138,6 +123,37 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
                 <i class="fa fa-bars"></i>
             </div>
         </div>
+
+        <?php if (isset($_SESSION['user']) && $_SESSION['user']['role']==='admin'): ?>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 d-flex align-items-center justify-content-center">
+                    <nav class="nav-menu w-100" style="display: flex; justify-content: center;">
+                        <ul style="display: flex; gap: 1.5rem; align-items: center; margin: 0 auto;">
+                            <li><a href="<?= BASE_URL ?>/pages/users/list.php">Users</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/plans/list.php">Plans</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/classes/list.php">Classes</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/posts/list.php">Posts</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/progress/list.php">Progress Logs</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/testimonials/list.php">Testimonials</a></li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                                <?= htmlspecialchars($_SESSION['user']['name'] ?? 'Admin') ?>
+                              </a>
+                              <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                              </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="canvas-open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+        <?php endif?>
+
     </header>
     <!-- Header End -->
     

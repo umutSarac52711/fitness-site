@@ -11,7 +11,8 @@ $page_title = 'Membership Plans';
 $stmt = $pdo->query('SELECT * FROM plans ORDER BY id DESC');
 $plans = $stmt->fetchAll();
 
-require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/file-start.php';
+require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -42,4 +43,4 @@ require_once BASE_PATH . '/templates/header.php';
   </tbody>
 </table>
 
-<?php require_once BASE_PATH . '/templates/footer.php'; ?>
+<?php require_once BASE_PATH . '/templates/script.php';?>
