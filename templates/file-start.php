@@ -5,7 +5,7 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title><?= htmlspecialchars($page_title) ?></title>
+  <title><?= htmlspecialchars($page_title) ?> | Fitness Site</title>
   <meta name="description" content="Gym Template">
   <meta name="keywords" content="Gym, unica, creative, html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

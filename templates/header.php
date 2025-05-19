@@ -1,7 +1,14 @@
 
     <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-
+    <div class="offcanvas-menu-overlay"></div>    <?php
+    // Helper function to check if current page matches a link
+    function isCurrentPage($link) {
+        $currentPage = $_SERVER['PHP_SELF'];
+        $link = str_replace(BASE_URL, '', $link);
+        return (strpos($currentPage, $link) !== false);
+    }
+    ?>
+    
     <div class="offcanvas-menu-wrapper">
         <div class="canvas-close">
             <i class="fa fa-close"></i>
@@ -13,11 +20,11 @@
         
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="<?= BASE_URL ?>/index.php">Home</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
+                <li<?= isCurrentPage('/index.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/index.php">Home</a></li>
+                <li<?= isCurrentPage('/pages/static/about-us.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
+                <li<?= isCurrentPage('/pages/static/class-details.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
+                <li<?= isCurrentPage('/pages/static/services.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
+                <li<?= isCurrentPage('/pages/static/team.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="dropdown">
                         <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About us</a></li>
@@ -67,41 +74,39 @@
                             <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="">
                         </a>
                     </div>
-                </div>
-                <div class="col-lg-6">
+                </div>                <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="<?= BASE_URL ?>/index.php">Home</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
-                            <li><a href="#">Pages</a>
+                            <li<?= isCurrentPage('/index.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/index.php">Home</a></li>
+                            <li<?= isCurrentPage('/pages/static/about-us.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
+                            <li<?= isCurrentPage('/pages/static/class-details.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
+                            <li<?= isCurrentPage('/pages/static/services.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
+                            <li<?= isCurrentPage('/pages/static/team.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
+                            <li<?= (isCurrentPage('/pages/static/class-timetable.php') || 
+                                  isCurrentPage('/pages/static/bmi-calculator.php') || 
+                                  isCurrentPage('/pages/static/gallery.php') || 
+                                  isCurrentPage('/pages/static/blog.php')) ? ' class="active"' : '' ?>><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About us</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">BMI Calculator</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>                                    <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our Blog</a></li>
                                 </ul>
                             </li>
-                            <li><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
+                            <li<?= isCurrentPage('/pages/static/contact.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
 
                             <?php if (empty($_SESSION['user'])): ?>
-                                <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/login.php">Login</a></li>
-                                <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/register.php">Register</a></li>
-                            <?php else: ?>
-                                <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
-                                <?= htmlspecialchars($_SESSION['user']['name']) ?>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="<?= BASE_URL ?>/logout.php">Logout</a></li>
-                                </ul>
-                              </li>
-                            <?php endif; ?>
+                                <li<?= isCurrentPage('/login.php') ? ' class="active"' : '' ?> class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/login.php">Login</a></li>
+                                <li<?= isCurrentPage('/register.php') ? ' class="active"' : '' ?> class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/register.php">Register</a></li>
+                            <?php elseif ($_SESSION['user']['role'] !== 'admin'): ?>
+                                <li>
+                                  <a href="#">
+                                    <?= htmlspecialchars($_SESSION['user']['name']) ?>
+                                  </a>
+                                  <ul class="dropdown">
+                                    <li><a href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                                  </ul>
+                                </li>      <?php endif; ?>
                         </ul>
                     </nav>
                 </div>
@@ -136,12 +141,9 @@
                             <li><a href="<?= BASE_URL ?>/pages/posts/list.php">Posts</a></li>
                             <li><a href="<?= BASE_URL ?>/pages/progress/list.php">Progress Logs</a></li>
                             <li><a href="<?= BASE_URL ?>/pages/testimonials/list.php">Testimonials</a></li>
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
-                                <?= htmlspecialchars($_SESSION['user']['name'] ?? 'Admin') ?>
-                              </a>
-                              <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                            <li><a href="#"><?= htmlspecialchars($_SESSION['user']['name'] ?? 'Admin') ?></a>
+                              <ul class="dropdown">
+                                <li><a href="<?= BASE_URL ?>/logout.php">Logout</a></li>
                               </ul>
                             </li>
                         </ul>

@@ -1,5 +1,5 @@
 <?php
-$page_title = "Class Timetable | Fitness Site";
+$page_title = "Class Timetable";
 require_once '../../config.php';          
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';

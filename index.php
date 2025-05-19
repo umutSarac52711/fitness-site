@@ -1,5 +1,5 @@
 <?php
-$page_title = "Home | Fitness Site";
+$page_title = "Home";
 require_once __DIR__ . '../config.php';          // DB not used yet, but keep it consistent
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';

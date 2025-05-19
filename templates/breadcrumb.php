@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb-text">
-                    <h2>This shit Brokey</h2>
+                    <h2><?= htmlspecialchars($page_title) ?></h2>
                     <div class="bt-option">
                         <a href="<?= BASE_URL ?>/index.php">Home</a>
-                        <span>idk</span>
+                        <span><?= htmlspecialchars($page_title) ?></span>
                     </div>
                 </div>
             </div>

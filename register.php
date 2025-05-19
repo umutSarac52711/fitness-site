@@ -23,7 +23,7 @@ require_once BASE_PATH . '/templates/header.php';
 ?>
 
 <!-- Register Section Begin -->
-<section class="contact-section spad" style="padding-top:60px; padding-bottom:60px;">
+<section class="contact-section spad" style="padding-top:180px; padding-bottom:60px;">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8">

@@ -8,7 +8,7 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 ?>
 
-<section class="contact-section spad" style="padding-top:60px; padding-bottom:60px;">
+<section class="contact-section spad" style="padding-top:180px; padding-bottom:60px;">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8 text-center">
@@ -16,8 +16,8 @@ require_once BASE_PATH . '/templates/header.php';
           <span>Goodbye!</span>
           <h2>You have been logged out</h2>
         </div>
-        <a href="<?= BASE_URL ?>/login.php" class="btn btn-primary">Login again</a>
-        <a href="<?= BASE_URL ?>/index.php" class="btn btn-secondary ms-2">Back to Home</a>
+        <a href="<?= BASE_URL ?>/login.php" class="primary-btn">Login again</a>
+        <a href="<?= BASE_URL ?>/index.php" class="primary-btn" style="background-color:grey;">Back to Home</a>
       </div>
     </div>
   </div>
