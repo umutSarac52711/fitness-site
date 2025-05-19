@@ -1,6 +1,6 @@
 <?php
 $page_title = "Blog Details | Fitness Site";
-require_once '../config.php';          
+require_once '../../config.php';          
 require_once '../templates/header.php';
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 $page_title = "Calculate BMI | Fitness Site";
-require_once '../config.php';          
+require_once '../../config.php';          
 require_once BASE_PATH . '/templates/header.php';
 require_once BASE_PATH . '/templates/breadcrumb.php';
 ?>

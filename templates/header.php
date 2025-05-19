@@ -40,32 +40,40 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
 
     <!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>
+
     <div class="offcanvas-menu-wrapper">
         <div class="canvas-close">
             <i class="fa fa-close"></i>
         </div>
+        
         <div class="canvas-search search-switch">
             <i class="fa fa-search"></i>
         </div>
+        
         <nav class="canvas-menu mobile-menu">
             <ul>
                 <li><a href="<?= BASE_URL ?>/index.php">Home</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/about-us.php">About Us</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/classes.php">Classes</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/services.php">Services</a></li>
-                <li><a href="<?= BASE_URL ?>/pages/team.php">Our Team</a></li>
+                <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
+                <li><a href="<?= BASE_URL ?>/pages/static/classes.php">Classes</a></li>
+                <li><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
+                <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="dropdown">
-                        <li><a href="<?= BASE_URL ?>/pages/about-us.php">About us</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/class-timetable.php">Classes timetable</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/bmi-calculator.php">Bmi calculate</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/team.php">Our team</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/gallery.php">Gallery</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/blog.php">Our blog</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/404.php">404</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About us</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
                     </ul>
                 </li>
-                <li><a href="<?= BASE_URL ?>/pages/contact.php">Contact</a></li>
+                <li><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
+                
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role']==='admin'): ?>
+                <li><a href="<?= BASE_URL ?>/pages/plans/list.php">Admin · Plans</a></li>
+                <?php endif; ?>
+
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -93,22 +101,22 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
                     <nav class="nav-menu">
                         <ul>
                             <li class="active"><a href="<?= BASE_URL ?>/index.php">Home</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/about-us.php">About Us</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/class-details.php">Classes</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/services.php">Services</a></li>
-                            <li><a href="<?= BASE_URL ?>/pages/team.php">Our Team</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="<?= BASE_URL ?>/pages/about-us.php">About us</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/class-timetable.php">Classes timetable</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/bmi-calculator.php">Bmi calculate</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/team.php">Our team</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/gallery.php">Gallery</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/blog.php">Our blog</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/404.php">404</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About us</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
                                 </ul>
                             </li>
-                            <li><a href="<?= BASE_URL ?>/pages/contact.php">Contact</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

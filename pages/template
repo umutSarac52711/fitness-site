@@ -1,0 +1,39 @@
+/pages
+ ├─ plans/
+ │   ├ list.php      ← Read (HTML table + “Add New”)
+ │   ├ add.php       ← Create (form + POST handler)
+ │   ├ edit.php      ← Update (pre-filled form + POST handler)
+ │   └ delete.php    ← Delete (confirmation + POST handler or AJAX)
+ │
+ ├─ classes/
+ │   ├ list.php
+ │   ├ add.php
+ │   ├ edit.php
+ │   └ delete.php
+ │
+ ├─ progress/
+ │   ├ list.php
+ │   ├ add.php
+ │   ├ edit.php
+ │   └ delete.php
+ │
+ ├─ posts/
+ │   ├ list.php      ← Lists all posts
+ │   ├ view.php      ← Single-post + comments (R + Create comment)
+ │   ├ add.php       ← Create post
+ │   ├ edit.php
+ │   └ delete.php
+ │
+ ├─ testimonials/
+ │   ├ list.php
+ │   ├ add.php       ← Optional: user submission form
+ │   ├ edit.php      ← Admin approval/edit
+ │   └ delete.php
+ │
+ ├─ users/
+ │   ├─ list.php      ← Admin view of all users
+ │   ├─ add.php       ← Admin add user
+ │   ├─ edit.php      ← Admin edit user
+ │   └─ delete.php    ← Admin delete user     
+ │
+ └─ static/           ← Rest of the pages

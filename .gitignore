@@ -14,5 +14,5 @@
 Thumbs.db
 
 # Environment / secrets
-config.php        # contains DB password – keep local only!
+config.php        # contains DB password - keep local only!
 .env

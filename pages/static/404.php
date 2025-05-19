@@ -1,6 +1,6 @@
 <?php
 $page_title = "404! Page Not Found";
-require_once '../config.php';          
+require_once '../../config.php';          
 ?>
 
 <!-- 404 Section Begin -->

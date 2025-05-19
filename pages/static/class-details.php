@@ -1,7 +1,8 @@
 <?php
 $page_title = "Class Details | Fitness Site";
-require_once '../config.php';          
+require_once '../../config.php';          
 require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/breadcrumb.php';
 ?>
 
     <!-- Class Details Section Begin -->
@@ -15,7 +16,7 @@ require_once BASE_PATH . '/templates/header.php';
                         </div>
                         <div class="cd-text">
                             <div class="cd-single-item">
-                                <h3>Body buiding</h3>
+                                <h3>Body Building</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
@@ -76,10 +77,10 @@ require_once BASE_PATH . '/templates/header.php';
                             <h5 class="title">Categories</h5>
                             <ul>
                                 <li><a href="#">Yoga <span>12</span></a></li>
-                                <li><a href="#">Runing <span>32</span></a></li>
-                                <li><a href="#">Weightloss <span>86</span></a></li>
-                                <li><a href="#">Cario <span>25</span></a></li>
-                                <li><a href="#">Body buiding <span>36</span></a></li>
+                                <li><a href="#">Running <span>32</span></a></li>
+                                <li><a href="#">Weight Loss <span>86</span></a></li>
+                                <li><a href="#">Cardio <span>25</span></a></li>
+                                <li><a href="#">Body building <span>36</span></a></li>
                                 <li><a href="#">Nutrition <span>15</span></a></li>
                             </ul>
                         </div>
@@ -171,7 +172,7 @@ require_once BASE_PATH . '/templates/header.php';
                                 <tr>
                                     <td class="class-time">6.00am - 8.00am</td>
                                     <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>WEIGHT LOOSE</h5>
+                                        <h5>Weight Loss</h5>
                                         <span>RLefew D. Loee</span>
                                     </td>
                                     <td class="hover-dp ts-meta" data-tsmeta="fitness">
@@ -204,7 +205,7 @@ require_once BASE_PATH . '/templates/header.php';
                                         <span>Kimberly Stone</span>
                                     </td>
                                     <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>WEIGHT LOOSE</h5>
+                                        <h5>Weight Loss</h5>
                                         <span>RLefew D. Loee</span>
                                     </td>
                                     <td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation">
@@ -273,7 +274,7 @@ require_once BASE_PATH . '/templates/header.php';
                                         <span>Rachel Adam</span>
                                     </td>
                                     <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>WEIGHT LOOSE</h5>
+                                        <h5>Weight Loss</h5>
                                         <span>RLefew D. Loee</span>
                                     </td>
                                 </tr>

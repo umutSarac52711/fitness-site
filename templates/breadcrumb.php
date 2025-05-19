@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb-text">
-                    <h2>About us</h2>
+                    <h2>This shit Brokey</h2>
                     <div class="bt-option">
                         <a href="<?= BASE_URL ?>/index.php">Home</a>
-                        <span>About</span>
+                        <span>idk</span>
                     </div>
                 </div>
             </div>

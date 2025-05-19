@@ -1,8 +1,8 @@
 <?php
 $page_title = "About Us | Fitness Site";
-require_once '../config.php';          
-require_once '../templates/header.php';
-require_once '../templates/breadcrumb.php';
+require_once '../../config.php';          
+require_once BASE_PATH . '/templates/header.php';
+require_once BASE_PATH . '/templates/breadcrumb.php';
 ?>
 
 <!-- ChooseUs Section Begin -->

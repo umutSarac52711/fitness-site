@@ -1,0 +1,109 @@
+<?php
+require_once __DIR__ . '/../../config.php';
+require_once BASE_PATH . '/includes/functions.php';
+
+require_once BASE_PATH . '/includes/auth.php';
+require_admin();   // kicks non-admins to home
+
+
+
+$page_title = 'Add Class';
+check_csrf();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = trim($_POST['title']);
+    $room = trim($_POST['room']);
+    $capacity = $_POST['capacity'] !== '' ? (int)$_POST['capacity'] : null;
+    $start_dt = $_POST['start_dt'];
+    $end_dt = $_POST['end_dt'];
+    $description = trim($_POST['description']);
+
+    $sql = 'INSERT INTO classes (title, room, capacity, start_dt, end_dt, description)
+            VALUES (:title, :room, :capacity, :start_dt, :end_dt, :description)';
+    $pdo->prepare($sql)->execute([
+        ':title' => $title,
+        ':room' => $room,
+        ':capacity' => $capacity,
+        ':start_dt' => $start_dt,
+        ':end_dt' => $end_dt,
+        ':description' => $description
+    ]);
+
+    header('Location: ' . BASE_URL . '/pages/classes/list.php');
+    exit;
+}
+
+require_once BASE_PATH . '/templates/header.php';
+?>
+
+<h1 class="h3 mb-3">New Class</h1>
+
+<form method="POST" class="needs-validation" novalidate>
+  <input type="hidden" name="csrf" value="<?= csrf_token() ?>">
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">Title</label>
+    <div class="col-sm-10">
+      <input name="title" class="form-control" required>
+      <div class="invalid-feedback">Required</div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">Room</label>
+    <div class="col-sm-4">
+      <input name="room" class="form-control">
+    </div>
+    <label class="col-sm-2 col-form-label">Capacity</label>
+    <div class="col-sm-4">
+      <input name="capacity" type="number" class="form-control">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">Start Date/Time</label>
+    <div class="col-sm-4">
+      <input name="start_dt" type="datetime-local" class="form-control" required>
+      <div class="invalid-feedback">Required</div>
+    </div>
+    <label class="col-sm-2 col-form-label">End Date/Time</label>
+    <div class="col-sm-4">
+      <input name="end_dt" type="datetime-local" class="form-control" required>
+      <div class="invalid-feedback">Required</div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+      <textarea name="description" class="form-control" rows="3"></textarea>
+    </div>
+  </div>
+
+  <button class="btn btn-primary">Add Class</button>
+  <a href="<?= BASE_URL ?>/pages/classes/list.php" class="btn btn-secondary">Cancel</a>
+</form>
+             class="form-control" required>
+      <div class="invalid-feedback">Number ≥ 0</div>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Weeks</label>
+    <div class="col-sm-4">
+      <input name="weeks" type="number" min="1"
+             class="form-control" required>
+    </div>
+  </div>
+
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox"
+           name="active" id="active" checked>
+    <label class="form-check-label" for="active">Active?</label>
+  </div>
+
+  <button class="btn btn-success">Save</button>
+  <a href="<?= BASE_URL ?>/pages/plans/list.php"
+     class="btn btn-secondary">Cancel</a>
+</form>
+
+
+<?php require_once BASE_PATH . '/templates/footer.php'; ?>
