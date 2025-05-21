@@ -324,13 +324,13 @@ ol {
 -----------------------*/
 
 .header-section {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	padding: 0 15px;
 	padding-top: 55px;
-	z-index: 99;
+	z-index: 1000;
 }
 
 .logo a {
@@ -3218,7 +3218,8 @@ ol {
 		width: 100%;
 	}
 }
-
+.main-content {
+	margin-top: 55px;  
 /* Small Device = 320px */
 
 @media only screen and (max-width: 479px) {
