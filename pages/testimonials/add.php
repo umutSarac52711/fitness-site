@@ -11,16 +11,16 @@ $page_title = 'Add Testimonial';
 check_csrf();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = (int)$_POST['user_id'];
+    $name = trim($_POST['name']);
     $rating = $_POST['rating'] !== '' ? (int)$_POST['rating'] : null;
     $quote = trim($_POST['quote']);
     $status = $_POST['status'] ?? null;
-    $created_at = $_POST['created_at'] !== '' ? $_POST['created_at'] : null;
+    $created_at = DateTime::createFromFormat('Y-m-d', $_POST['created_at']);
 
-    $sql = 'INSERT INTO testimonials (user_id, rating, quote, created_at, status)
-            VALUES (:user_id, :rating, :quote, :created_at, :status)';
+    $sql = 'INSERT INTO testimonials (name, rating, quote, created_at, status)
+            VALUES (:name, :rating, :quote, :created_at, :status)';
     $pdo->prepare($sql)->execute([
-        ':user_id' => $user_id,
+        ':name' => $name,
         ':rating' => $rating,
         ':quote' => $quote,
         ':created_at' => $created_at,
@@ -43,9 +43,9 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <input type="hidden" name="csrf" value="<?= csrf_token() ?>">
 
   <div class="row mb-3">
-    <label class="col-sm-2 col-form-label">User ID</label>
+    <label class="col-sm-2 col-form-label">Full Name</label>
     <div class="col-sm-4">
-      <input name="user_id" type="number" class="form-control" required>
+      <input name="name" class="form-control" required>
       <div class="invalid-feedback">Required</div>
     </div>
 

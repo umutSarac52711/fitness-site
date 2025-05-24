@@ -1,0 +1,150 @@
+.account-section {
+            background: #151515;
+            padding-top: 60px; /* Adjusted from spad for less top space after breadcrumb */
+            padding-bottom: 100px;
+            color: #c4c4c4;
+        }
+
+        .account-sidebar {
+            background: #0a0a0a;
+            padding: 30px 20px;
+            border-radius: 5px; /* Optional */
+            border: 1px solid #2a2a2a;
+        }
+
+        .profile-pic-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #f36100;
+            object-fit: cover;
+        }
+        .profile-pic-container .user-name {
+            color: #ffffff;
+            font-size: 20px;
+            font-family: "Oswald", sans-serif;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        .profile-pic-container .user-email-display {
+            font-size: 13px;
+            color: #a9a9a9;
+        }
+
+
+        .account-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .account-nav ul li a {
+            display: block;
+            padding: 12px 15px;
+            color: #c4c4c4;
+            font-family: "Oswald", sans-serif;
+            text-transform: uppercase;
+            font-size: 14px;
+            border-bottom: 1px solid #252525;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .account-nav ul li a i {
+            margin-right: 10px;
+            width: 20px; /* For alignment */
+            text-align: center;
+        }
+
+        .account-nav ul li a:hover,
+        .account-nav ul li a.active {
+            background-color: #f36100;
+            color: #ffffff;
+            padding-left: 20px;
+        }
+
+        .account-nav ul li:last-child a {
+            border-bottom: none;
+        }
+
+        .account-content {
+            background: #0a0a0a;
+            padding: 30px;
+            border-radius: 5px; /* Optional */
+            border: 1px solid #2a2a2a;
+        }
+        
+        .account-content h3.content-title {
+            color: #ffffff;
+            font-family: "Oswald", sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #363636;
+        }
+        
+        .info-group {
+            margin-bottom: 20px;
+        }
+        .info-group strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        .info-group p {
+            color: #a9a9a9;
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+
+        .account-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .account-form .form-group label {
+            display: block;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .account-form .form-group input[type="text"],
+        .account-form .form-group input[type="email"],
+        .account-form .form-group input[type="password"],
+        .account-form .form-group input[type="date"],
+        .account-form .form-group select {
+            font-size: 14px;
+            color: #c4c4c4;
+            width: 100%;
+            height: 50px;
+            border: 1px solid #363636;
+            padding-left: 20px;
+            padding-right: 5px;
+            background: #1c1c1c; /* Darker input background */
+            margin-bottom: 0;
+        }
+
+        .account-form .form-group input:focus,
+        .account-form .form-group select:focus {
+            border-color: #f36100;
+            background-color: #222222; /* Slightly lighter on focus */
+            outline: none;
+        }
+        .primary-btn.account-btn {
+            width: auto; /* Or 100% if you prefer full-width buttons */
+            padding: 15px 35px;
+        }
+        .logout-btn {
+            background-color: #444;
+        }
+        .logout-btn:hover {
+             background-color: #333;
+        }

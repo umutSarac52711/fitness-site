@@ -14,23 +14,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     check_csrf();
 
     // Trim & sanitize inputs
-    $name     = trim($_POST['name']);
+    $full_name = trim($_POST['full_name']);
+    $username = trim($_POST['username']); // Added username
     $email    = trim($_POST['email']);
-    $password = $_POST['password'];
+    $password_input = $_POST['password'];
     $role     = $_POST['role'] === 'admin' ? 'admin' : 'member';
 
+    // Basic validation for username (e.g., not empty, maybe more specific rules)
+    if (empty($username)) {
+        // Handle error - for now, let's assume it's caught by 'required' in HTML
+        // Or add specific error handling here
+    }
+
     // 4) Securely hash the password
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($password_input, PASSWORD_DEFAULT);
 
     // 5) Insert into the users table
-    $sql = 'INSERT INTO users (name, email, password_hash, role)
-            VALUES (?, ?, ?, ?)';
+    $sql = 'INSERT INTO users (full_name, username, email, password, role) 
+            VALUES (?, ?, ?, ?, ?)'; // Added username
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$name, $email, $hash, $role]);
-
-    // 6) Redirect to avoid form re-submission
-    header('Location: ' . BASE_URL . '/pages/users/list.php');
-    exit;
+    try {
+        $stmt->execute([$full_name, $username, $email, $hash, $role]);
+        // 6) Redirect to avoid form re-submission
+        header('Location: ' . BASE_URL . '/pages/users/list.php?success=User added');
+        exit;
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) { // Integrity constraint violation
+            // Check if it's a username or email conflict
+            if (strpos($e->getMessage(), 'username') !== false) {
+                $error = 'Username already exists.';
+            } elseif (strpos($e->getMessage(), 'email') !== false) {
+                $error = 'Email address already exists.';
+            } else {
+                $error = 'A unique field conflict occurred. Please check username and email.';
+            }
+        } else {
+            $error = 'Database error: ' . $e->getMessage();
+        }
+        // If error, fall through to display form again with error message
+    }
 }
 
 // 7) Page metadata + header
@@ -43,18 +65,28 @@ require_once BASE_PATH . '/templates/header-admin.php';
 
 <h1 class="h3 mb-4">Create New User</h1>
 
+<?php if (isset($error)): ?>
+<div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+<?php endif; ?>
+
 <form method="POST" class="needs-validation" novalidate>
   <input type="hidden" name="csrf" value="<?= csrf_token() ?>">
 
   <div class="mb-3">
     <label class="form-label">Full Name</label>
-    <input name="name" type="text" class="form-control" required>
+    <input name="full_name" type="text" class="form-control" required value="<?= htmlspecialchars($_POST['full_name'] ?? '') ?>">
     <div class="invalid-feedback">Please enter a name.</div>
   </div>
 
   <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input name="username" type="text" class="form-control" required value="<?= htmlspecialchars($_POST['username'] ?? '') ?>">
+    <div class="invalid-feedback">Please enter a username.</div>
+  </div>
+
+  <div class="mb-3">
     <label class="form-label">Email address</label>
-    <input name="email" type="email" class="form-control" required>
+    <input name="email" type="email" class="form-control" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
     <div class="invalid-feedback">Please enter a valid email.</div>
   </div>
 

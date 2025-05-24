@@ -17,7 +17,8 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     check_csrf();
-    $name = trim($_POST['name']);
+    $full_name = trim($_POST['full_name']);
+    $username = trim($_POST['username']); // Added username
     $email = trim($_POST['email']);
     $role = $_POST['role'] === 'admin' ? 'admin' : 'member';
     $is_active = isset($_POST['is_active']) ? 1 : 0;
@@ -25,19 +26,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Prevent admin from demoting themselves
     if ($self && $user['role'] === 'admin' && $role !== 'admin') {
         $error = 'You cannot demote your own admin account.';
+    } elseif (empty($username)) {
+        $error = 'Username cannot be empty.';
     } else {
         try {
-            $sql = 'UPDATE users SET name=?, email=?, role=?, is_active=? WHERE id=?';
-            $pdo->prepare($sql)->execute([$name, $email, $role, $is_active, $id]);
-            header('Location: ' . BASE_URL . '/pages/users/list.php');
+            // Check if username is being changed and if the new one already exists
+            if ($username !== $user['username']) {
+                $stmt_check_username = $pdo->prepare("SELECT id FROM users WHERE username = ? AND id != ?");
+                $stmt_check_username->execute([$username, $id]);
+                if ($stmt_check_username->fetch()) {
+                    throw new PDOException("Username '{$username}' already exists.", 23000);
+                }
+            }
+
+            $sql = 'UPDATE users SET full_name=?, username=?, email=?, role=?, is_active=? WHERE id=?'; // Added username=?
+            $pdo->prepare($sql)->execute([$full_name, $username, $email, $role, $is_active, $id]);
+            header('Location: ' . BASE_URL . '/pages/users/list.php?success=User updated');
             exit;
         } catch (PDOException $e) {
-            if ($e->getCode() == 23000) {
-                $error = 'Email address already exists.';
+            if ($e->getCode() == 23000) { // Integrity constraint violation
+                 if (strpos(strtolower($e->getMessage()), 'username') !== false) {
+                    $error = "Username '{$username}' already exists.";
+                } elseif (strpos(strtolower($e->getMessage()), 'email') !== false) {
+                    $error = "Email address '{$email}' already exists for another user.";
+                } else {
+                    $error = 'A unique field conflict occurred. Please check username and email.';
+                }
             } else {
-                $error = 'Error: ' . $e->getMessage();
+                $error = 'Database error: ' . $e->getMessage();
             }
         }
+    }
+    // If error, update $user array with POSTed values to repopulate form
+    if ($error) {
+        $user['full_name'] = $full_name;
+        $user['username'] = $username;
+        $user['email'] = $email;
+        $user['role'] = $role;
+        $user['is_active'] = $is_active;
     }
 }
 
@@ -58,8 +84,14 @@ require_once BASE_PATH . '/templates/header-admin.php';
 
   <div class="mb-3">
     <label class="form-label">Full Name</label>
-    <input name="name" type="text" class="form-control" value="<?= htmlspecialchars($user['name']) ?>" required>
+    <input name="full_name" type="text" class="form-control" value="<?= htmlspecialchars($user['full_name']) ?>" required>
     <div class="invalid-feedback">Please enter a name.</div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input name="username" type="text" class="form-control" value="<?= htmlspecialchars($user['username']) ?>" required>
+    <div class="invalid-feedback">Please enter a username.</div>
   </div>
 
   <div class="mb-3">

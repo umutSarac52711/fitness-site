@@ -30,3 +30,9 @@ function make_slug(string $text): string {
     return $text ?: 'n-a';
 }
 
+function isCurrentPage($link) {
+        $currentPage = $_SERVER['PHP_SELF'];
+        $link = str_replace(BASE_URL, '', $link);
+        return (strpos($currentPage, $link) !== false);
+    }
+

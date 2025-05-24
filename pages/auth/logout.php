@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once '../../config.php';
 require_once BASE_PATH.'/includes/auth.php';
 logout();
 
@@ -16,7 +16,7 @@ require_once BASE_PATH . '/templates/header.php';
           <span>Goodbye!</span>
           <h2>You have been logged out</h2>
         </div>
-        <a href="<?= BASE_URL ?>/login.php" class="primary-btn">Login again</a>
+        <a href="<?= BASE_URL ?>/pages/auth/login.php" class="primary-btn">Login again</a>
         <a href="<?= BASE_URL ?>/index.php" class="primary-btn" style="background-color:grey;">Back to Home</a>
       </div>
     </div>

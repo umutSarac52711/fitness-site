@@ -8,8 +8,8 @@ require_admin();   // kicks non-admins to home
 
 $page_title = 'Classes';
 
-$stmt = $pdo->query('SELECT * FROM classes ORDER BY id DESC');
-$classes = $stmt->fetchAll();
+$stmt = $pdo->query('SELECT * FROM testimonials ORDER BY id DESC');
+$testimonials = $stmt->fetchAll();
 
 
 require_once BASE_PATH . '/templates/file-start.php';
@@ -30,7 +30,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
           <thead class="table-dark">
             <tr>
               <th>ID</th>
-              <th>User ID</th>
+              <th>Name</th>
               <th>Rating</th>
               <th>Quote</th>
               <th>Created At</th>
@@ -42,7 +42,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
             <?php foreach ($testimonials as $t): ?>
               <tr>
                 <td><?= $t['id'] ?></td>
-                <td><?= htmlspecialchars($t['user_id']) ?></td>
+                <td><?= htmlspecialchars($t['name']) ?></td>
                 <td><?= htmlspecialchars($t['rating']) ?></td>
                 <td><?= htmlspecialchars($t['quote']) ?></td>
                 <td><?= htmlspecialchars($t['created_at']) ?></td>

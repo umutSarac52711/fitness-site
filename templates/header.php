@@ -1,11 +1,6 @@
 <!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>    <?php
-    // Helper function to check if current page matches a link
-    function isCurrentPage($link) {
-        $currentPage = $_SERVER['PHP_SELF'];
-        $link = str_replace(BASE_URL, '', $link);
-        return (strpos($currentPage, $link) !== false);
-    }
+    
     ?>
     
     <div class="offcanvas-menu-wrapper">
@@ -37,18 +32,30 @@
                 </li>
                 <li><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
                 
-                <?php if (empty($_SESSION['user'])): ?>
-                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/login.php">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/register.php">Register</a></li>
-                <?php else: ?>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
-                    <?= htmlspecialchars($_SESSION['user']['name']) ?>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="<?= BASE_URL ?>/logout.php">Logout</a></li>
-                    </ul>
-                  </li>
+                <?php if (!empty($_SESSION['user'])): // User is logged in ?>
+                    <?php 
+                        $displayName = !empty(trim($_SESSION['user']['full_name'] ?? '')) 
+                                       ? $_SESSION['user']['full_name'] 
+                                       : (!empty(trim($_SESSION['user']['username'] ?? ''))
+                                          ? $_SESSION['user']['username']
+                                          : ($_SESSION['user']['role'] === 'admin' ? 'Admin' : 'User'));
+                        
+                        $accountLink = ($_SESSION['user']['role'] === 'admin') 
+                                       ? '#' // Admin name in main nav can link to # or a general admin dashboard landing
+                                       : BASE_URL.'/pages/auth/account.php';
+                    ?>
+                    <li>
+                        <a href="<?= $accountLink ?>"><?= htmlspecialchars($displayName) ?></a>
+                        <ul class="dropdown">
+                            <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'admin'): ?>
+                                <li><a href="<?= BASE_URL ?>/pages/auth/account.php">My Account</a></li>
+                            <?php endif; ?>
+                            <li><a href="<?= BASE_URL ?>/pages/auth/logout.php">Logout</a></li>
+                        </ul>
+                    </li>
+                <?php else: // User is a guest ?>
+                    <li<?= isCurrentPage('/login.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/auth/login.php">Login</a></li>
+                    <li<?= isCurrentPage('/register.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/auth/register.php">Register</a></li>
                 <?php endif; ?>
 
             </ul>
@@ -70,7 +77,7 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="<?= BASE_URL ?>/index.php">
-                            <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="Fitness Logo">
+                            <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="Fitness Logo" height="45" padding-top="auto">
                         </a>
                     </div>
                 </div>
@@ -93,15 +100,32 @@
                                     <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
                                 </ul>
                             </li>
-                            <?php if (empty($_SESSION['user'])): ?>
-                                <li<?= isCurrentPage('/login.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/login.php">Login</a></li>
-                                <li<?= isCurrentPage('/register.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/register.php">Register</a></li>
-                            <?php elseif (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'admin'): ?>
-                                <li><a href="#"><?= htmlspecialchars($_SESSION['user']['name']) ?></a>
+                            <?php if (!empty($_SESSION['user'])): // User is logged in ?>
+                                <?php 
+                                    $displayName = !empty(trim($_SESSION['user']['full_name'] ?? '')) 
+                                                   ? $_SESSION['user']['full_name'] 
+                                                   : (!empty(trim($_SESSION['user']['username'] ?? ''))
+                                                      ? $_SESSION['user']['username']
+                                                      : ($_SESSION['user']['role'] === 'admin' ? 'Admin' : 'User'));
+                                    
+                                    $accountLink = ($_SESSION['user']['role'] === 'admin') 
+                                                   ? '#' // Admin name in main nav can link to # or a general admin dashboard landing
+                                                   : BASE_URL.'/pages/auth/account.php';
+                                ?>
+                                <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'admin'): ?>
+                                
+                                    <li>
+                                    <a href="<?= $accountLink ?>"><?= htmlspecialchars($displayName) ?></a>
                                     <ul class="dropdown">
-                                        <li><a href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                                            <li><a href="<?= BASE_URL ?>/pages/auth/account.php">My Account</a></li>
+                                        <li><a href="<?= BASE_URL ?>/pages/auth/logout.php">Logout</a></li>
                                     </ul>
                                 </li>
+
+                                <?php endif; ?>
+                            <?php else: // User is a guest ?>
+                                <li<?= isCurrentPage('login.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/auth/login.php">Login</a></li>
+                                <li<?= isCurrentPage('register.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/auth/register.php">Register</a></li>
                             <?php endif; ?>
                         </ul>
                     </nav>
@@ -112,10 +136,10 @@
                             <i class="fa fa-search"></i>
                         </div>
                         <div class="to-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/TEDUniversity"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/ted_uni"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/user/TEDUChannel"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://www.instagram.com/universityted/"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -136,9 +160,18 @@
                             <li><a href="<?= BASE_URL ?>/pages/posts/list.php">Posts</a></li>
                             <li><a href="<?= BASE_URL ?>/pages/progress/list.php">Progress Logs</a></li>
                             <li><a href="<?= BASE_URL ?>/pages/testimonials/list.php">Testimonials</a></li>
-                            <li><a href="#"><?= htmlspecialchars($_SESSION['user']['name'] ?? 'Admin') ?></a>
+                            <li>
+                                <?php 
+                                    // Determine display name for admin in admin bar
+                                    $adminDisplayName = !empty(trim($_SESSION['user']['full_name'] ?? '')) 
+                                                      ? $_SESSION['user']['full_name'] 
+                                                      : (!empty(trim($_SESSION['user']['username'] ?? ''))
+                                                         ? $_SESSION['user']['username']
+                                                         : 'Admin');
+                                ?>
+                                <a href="<?= BASE_URL ?>/pages/auth/account.php "><?= htmlspecialchars($adminDisplayName) ?></a>
                               <ul class="dropdown">
-                                <li><a href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                                <li><a href="<?= BASE_URL ?>/pages/auth/logout.php">Logout</a></li>
                               </ul>
                             </li>
                         </ul>

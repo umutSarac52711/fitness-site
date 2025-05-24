@@ -5,14 +5,20 @@ require_once BASE_PATH . '/includes/functions.php';
 require_admin();
 
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
-$where = $search ? 'WHERE email LIKE :search' : '';
-$sql = "SELECT * FROM users $where ORDER BY id DESC";
-$stmt = $pdo->prepare($sql);
+$where_clauses = [];
+$params = [];
+
 if ($search) {
-    $stmt->execute([':search' => "%$search%"]);
-} else {
-    $stmt->execute();
+    $search_param = "%$search%";
+    $where_clauses[] = '(email LIKE :search OR full_name LIKE :search OR username LIKE :search)';
+    $params[':search'] = $search_param;
 }
+
+$where = $where_clauses ? 'WHERE ' . implode(' AND ', $where_clauses) : '';
+
+$sql = "SELECT id, username, full_name, email, created_at, role, is_active FROM users $where ORDER BY id DESC";
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
 $users = $stmt->fetchAll();
 
 $page_title = 'Users';
@@ -38,7 +44,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
       </div>
       <form class="mb-3" method="get">
         <div class="input-group">
-          <input type="text" name="search" class="form-control" placeholder="Search by email..." value="<?= htmlspecialchars($search) ?>">
+          <input type="text" name="search" class="form-control" placeholder="Search by Username, Full Name, Email..." value="<?= htmlspecialchars($search) ?>">
           <button class="btn btn-outline-secondary" type="submit">Search</button>
         </div>
       </form>
@@ -47,7 +53,8 @@ require_once BASE_PATH . '/templates/header-admin.php';
           <thead class="table-dark">
             <tr>
               <th>ID</th>
-              <th>Name</th>
+              <th>Username</th>
+              <th>Full Name</th>
               <th>Email</th>
               <th>Created At</th>
               <th>Role</th>
@@ -59,7 +66,8 @@ require_once BASE_PATH . '/templates/header-admin.php';
             <?php foreach ($users as $u): ?>
               <tr<?= !$u['is_active'] ? ' class="text-muted" style="opacity:.6"' : '' ?>>
                 <td><?= $u['id'] ?></td>
-                <td><?= htmlspecialchars($u['name']) ?></td>
+                <td><?= htmlspecialchars($u['username']) ?></td>
+                <td><?= htmlspecialchars($u['full_name']) ?></td> <!-- Changed from $u['name'] -->
                 <td><?= htmlspecialchars($u['email']) ?></td>
                 <td><?= htmlspecialchars($u['created_at']) ?></td>
                 <td><?= htmlspecialchars($u['role']) ?></td>

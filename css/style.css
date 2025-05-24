@@ -3228,6 +3228,7 @@ ol {
 }
 .main-content {
 	margin-top: 55px;  
+}
 /* Small Device = 320px */
 
 @media only screen and (max-width: 479px) {

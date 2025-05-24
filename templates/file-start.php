@@ -2,6 +2,7 @@
 if (!isset($page_title)) { $page_title = 'Fitness Site'; }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +26,7 @@ if (!isset($page_title)) { $page_title = 'Fitness Site'; }
   <link rel="stylesheet" href="<?= BASE_URL ?>/css/magnific-popup.css" type="text/css">
   <link rel="stylesheet" href="<?= BASE_URL ?>/css/slicknav.min.css" type="text/css">
   <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css" type="text/css">
-  <link href="<?= BASE_URL ?>/assets/css/custom.css" rel="stylesheet">
+  <link href="<?= BASE_URL ?>/css/custom.css" rel="stylesheet">
 </head>
 
 <body>
