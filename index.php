@@ -14,8 +14,8 @@ require_once BASE_PATH . '/templates/header.php';
                         <div class="col-lg-6 offset-lg-6">
                             <div class="hi-text">
                                 <span>Shape your body</span>
-                                <h1>Be <strong>strong</strong> traning hard</h1>
-                                <a href="#" class="primary-btn">Get info</a>
+                                <h1>Be <strong>strong</strong> train hard</h1>
+                                <a href="#ChooseUs" class="primary-btn">Get info</a>
                             </div>
                         </div>
                     </div>
@@ -26,9 +26,9 @@ require_once BASE_PATH . '/templates/header.php';
                     <div class="row">
                         <div class="col-lg-6 offset-lg-6">
                             <div class="hi-text">
-                                <span>Shape your body</span>
-                                <h1>Be <strong>strong</strong> traning hard</h1>
-                                <a href="#" class="primary-btn">Get info</a>
+                                <span>Join Now</span>
+                                <h1>Pick Your <strong>Plan</strong></h1>
+                                <a href="#pricing" class="primary-btn">Get info</a>
                             </div>
                         </div>
                     </div>
@@ -38,8 +38,8 @@ require_once BASE_PATH . '/templates/header.php';
     </section>
     <!-- Hero Section End -->
 
-    <!-- ChoseUs Section Begin -->
-    <section class="choseus-section spad">
+    <!-- ChooseUs Section Begin -->
+    <section class="choseus-section spad" id="ChooseUs">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -53,39 +53,36 @@ require_once BASE_PATH . '/templates/header.php';
                 <div class="col-lg-3 col-sm-6">
                     <div class="cs-item">
                         <span class="flaticon-034-stationary-bike"></span>
-                        <h4>Modern equipment</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            dolore facilisis.</p>
+                        <h4>State-of-the-Art Equipment</h4>
+                        <p>Experience cutting-edge machines and weights designed to meet the rigorous standards of today's university athletes.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="cs-item">
                         <span class="flaticon-033-juice"></span>
-                        <h4>Healthy nutrition plan</h4>
-                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                            facilisis.</p>
+                        <h4>Tailored Student Nutrition</h4>
+                        <p>Access customized nutrition guidance and meal plans that keep you energized during long study sessions and intense workouts.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="cs-item">
                         <span class="flaticon-002-dumbell"></span>
-                        <h4>Proffesponal training plan</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            dolore facilisis.</p>
+                        <h4>Personalized Training Programs</h4>
+                        <p>Benefit from expert coaching and training sessions developed specifically for university students looking to balance fitness with academics.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="cs-item">
                         <span class="flaticon-014-heart-beat"></span>
-                        <h4>Unique to your needs</h4>
-                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                            facilisis.</p>
+                        <h4>Campus Community & Wellness</h4>
+                        <p>Join a vibrant community fostering health, fitness, and academic excellence, with events and challenges that unite students on campus.</p>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
-    <!-- ChoseUs Section End -->
+    <!-- ChooseUs Section End -->
 
     <!-- Classes Section Begin -->
     <section class="classes-section spad">
@@ -102,12 +99,12 @@ require_once BASE_PATH . '/templates/header.php';
                 <div class="col-lg-4 col-md-6">
                     <div class="class-item">
                         <div class="ci-pic">
-                            <img src="<?= BASE_URL ?>/assets/img/classes/class-1.jpg" alt="">
+                            <img src="<?= BASE_URL ?>/assets/img/classes/class-4.jpg" alt="">
                         </div>
                         <div class="ci-text">
                             <span>STRENGTH</span>
                             <h5>Weightlifting</h5>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                            <a href="<?= BASE_URL ?>/pages/static/class-details.php"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -119,7 +116,7 @@ require_once BASE_PATH . '/templates/header.php';
                         <div class="ci-text">
                             <span>Cardio</span>
                             <h5>Indoor cycling</h5>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                            <a href="<?= BASE_URL ?>/pages/static/class-details.php"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -131,31 +128,7 @@ require_once BASE_PATH . '/templates/header.php';
                         <div class="ci-text">
                             <span>STRENGTH</span>
                             <h5>Kettlebell power</h5>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="class-item">
-                        <div class="ci-pic">
-                            <img src="<?= BASE_URL ?>/assets/img/classes/class-4.jpg" alt="">
-                        </div>
-                        <div class="ci-text">
-                            <span>Cardio</span>
-                            <h4>Indoor cycling</h4>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="class-item">
-                        <div class="ci-pic">
-                            <img src="<?= BASE_URL ?>/assets/img/classes/class-5.jpg" alt="">
-                        </div>
-                        <div class="ci-text">
-                            <span>Training</span>
-                            <h4>Boxing</h4>
-                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                            <a href="<?= BASE_URL ?>/pages/static/class-details.php"><i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -164,7 +137,7 @@ require_once BASE_PATH . '/templates/header.php';
     </section>
     <!-- ChoseUs Section End -->
 
-    <!-- Banner Section Begin -->
+    <!-- Banner Section Begin 
     <section class="banner-section set-bg" data-setbg="<?= BASE_URL ?>/assets/img/banner-bg.jpg">
         <div class="container">
             <div class="row">
@@ -178,10 +151,10 @@ require_once BASE_PATH . '/templates/header.php';
             </div>
         </div>
     </section>
-    <!-- Banner Section End -->
+    Banner Section End -->
 
     <!-- Pricing Section Begin -->
-    <section class="pricing-section spad">
+    <section class="pricing-section spad" id="pricing">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -192,63 +165,37 @@ require_once BASE_PATH . '/templates/header.php';
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-8">
-                    <div class="ps-item">
-                        <h3>Class drop-in</h3>
-                        <div class="pi-price">
-                            <h2>$ 39.0</h2>
-                            <span>SINGLE CLASS</span>
+                <?php
+                $stmt = $pdo->query('SELECT * FROM plans ORDER BY price ASC');
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                if ($result && count($result) > 0):
+                    foreach ($result as $plan):
+                        // If the features are stored as a comma-separated string, split them into an array
+                        $featuresList = array_map('trim', explode(',', $plan['features']));
+                ?>
+                        <div class="col-lg-4 col-md-8">
+                            <div class="ps-item">
+                                <h3><?= htmlspecialchars($plan['name']); ?></h3>
+                                <div class="pi-price">
+                                    <h2>₺ <?= htmlspecialchars($plan['price']); ?></h2>
+                                    <span><?= htmlspecialchars($plan['duration_weeks']); ?> weeks </span>
+                                </div>
+                                <ul>
+                                    <?php foreach ($featuresList as $feature): ?>
+                                        <li><?= htmlspecialchars($feature); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <a href="#" class="primary-btn pricing-btn">Enroll now</a>
+                                <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
+                            </div>
                         </div>
-                        <ul>
-                            <li>Free riding</li>
-                            <li>Unlimited equipments</li>
-                            <li>Personal trainer</li>
-                            <li>Weight losing classes</li>
-                            <li>Month to mouth</li>
-                            <li>No time restriction</li>
-                        </ul>
-                        <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-                        <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-8">
-                    <div class="ps-item">
-                        <h3>12 Month unlimited</h3>
-                        <div class="pi-price">
-                            <h2>$ 99.0</h2>
-                            <span>SINGLE CLASS</span>
-                        </div>
-                        <ul>
-                            <li>Free riding</li>
-                            <li>Unlimited equipments</li>
-                            <li>Personal trainer</li>
-                            <li>Weight losing classes</li>
-                            <li>Month to mouth</li>
-                            <li>No time restriction</li>
-                        </ul>
-                        <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-                        <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-8">
-                    <div class="ps-item">
-                        <h3>6 Month unlimited</h3>
-                        <div class="pi-price">
-                            <h2>$ 59.0</h2>
-                            <span>SINGLE CLASS</span>
-                        </div>
-                        <ul>
-                            <li>Free riding</li>
-                            <li>Unlimited equipments</li>
-                            <li>Personal trainer</li>
-                            <li>Weight losing classes</li>
-                            <li>Month to mouth</li>
-                            <li>No time restriction</li>
-                        </ul>
-                        <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-                        <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                    </div>
-                </div>
+                <?php
+                    endforeach;
+                else:
+                    echo "<p>No plans found.</p>";
+                endif;?>
+
             </div>
         </div>
     </section>
@@ -280,7 +227,7 @@ require_once BASE_PATH . '/templates/header.php';
     </div>
     <!-- Gallery Section End -->
 
-    <!-- Team Section Begin -->
+    <!-- Team Section Begin
     <section class="team-section spad">
         <div class="container">
             <div class="row">
@@ -348,7 +295,7 @@ require_once BASE_PATH . '/templates/header.php';
             </div>
         </div>
     </section>
-    <!-- Team Section End -->
+    Team Section End -->
 
 <?php require_once BASE_PATH . '/templates/footer.php'; 
 require_once BASE_PATH . '/templates/script.php';?>

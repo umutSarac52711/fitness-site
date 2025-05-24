@@ -21,7 +21,7 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
-<div class="main-content container-fluid" style="padding-top: 90px; background-color: darkgrey; height: 100%;">
+<div class="main-content container-fluid" style="padding-top: 90px; background-color: black; height: 100%;">
   <div class="row">
     <div class="col-12">
       <h1 class="h3">Users</h1>
@@ -80,5 +80,4 @@ require_once BASE_PATH . '/templates/header-admin.php';
 </div>
 
 </div>
-
 <?php require_once BASE_PATH . '/templates/script.php';?>

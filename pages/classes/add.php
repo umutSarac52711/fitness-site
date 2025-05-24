@@ -17,16 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $start_dt = $_POST['start_dt'];
     $end_dt = $_POST['end_dt'];
     $description = trim($_POST['description']);
+    $trainerUID = $_POST['trainerUID'];
+    if (!$trainerUID) {
+        $trainerUID = 1;
+    }
 
-    $sql = 'INSERT INTO classes (title, room, capacity, start_dt, end_dt, description)
-            VALUES (:title, :room, :capacity, :start_dt, :end_dt, :description)';
+    $sql = 'INSERT INTO classes (title, room, capacity, start_dt, end_dt, description, trainer_id)
+            VALUES (:title, :room, :capacity, :start_dt, :end_dt, :description, :trainerUID)';
     $pdo->prepare($sql)->execute([
         ':title' => $title,
         ':room' => $room,
         ':capacity' => $capacity,
         ':start_dt' => $start_dt,
         ':end_dt' => $end_dt,
-        ':description' => $description
+        ':description' => $description,
+        ':trainerUID' => $trainerUID
     ]);
 
     header('Location: ' . BASE_URL . '/pages/classes/list.php');
@@ -36,6 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
+
+
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
 
 <h1 class="h3 mb-3">New Class</h1>
 
@@ -81,30 +89,17 @@ require_once BASE_PATH . '/templates/header-admin.php';
     </div>
   </div>
 
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">TrainerUID</label>
+    <div class="col-sm-4">
+      <input name="trainerUID" class="form-control">
+    </div>
+  </div>
+
   <button class="btn btn-primary">Add Class</button>
   <a href="<?= BASE_URL ?>/pages/classes/list.php" class="btn btn-secondary">Cancel</a>
 </form>
-             class="form-control" required>
-      <div class="invalid-feedback">Number ≥ 0</div>
-    </div>
 
-    <label class="col-sm-2 col-form-label">Weeks</label>
-    <div class="col-sm-4">
-      <input name="weeks" type="number" min="1"
-             class="form-control" required>
-    </div>
-  </div>
-
-  <div class="form-check mb-3">
-    <input class="form-check-input" type="checkbox"
-           name="active" id="active" checked>
-    <label class="form-check-label" for="active">Active?</label>
-  </div>
-
-  <button class="btn btn-success">Save</button>
-  <a href="<?= BASE_URL ?>/pages/plans/list.php"
-     class="btn btn-secondary">Cancel</a>
-</form>
-
+</div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

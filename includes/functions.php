@@ -5,6 +5,7 @@ function csrf_token() {
     }
     return $_SESSION['csrf'];
 }
+
 function check_csrf() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($_POST['csrf']) || $_POST['csrf'] !== ($_SESSION['csrf'] ?? '')) {
@@ -12,3 +13,20 @@ function check_csrf() {
         }
     }
 }
+
+function make_slug(string $text): string {
+    // 1) Convert to ASCII (drops accents, e.g. “é” → “e”)
+    $text = iconv('UTF-8', 'ASCII//TRANSLIT', $text);
+
+    // 2) Lowercase
+    $text = strtolower($text);
+
+    // 3) Remove non-alphanumeric, replace spaces with hyphens
+    $text = preg_replace('/[^a-z0-9]+/', '-', $text);
+
+    // 4) Trim hyphens from ends
+    $text = trim($text, '-');
+
+    return $text ?: 'n-a';
+}
+

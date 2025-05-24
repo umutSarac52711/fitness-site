@@ -44,6 +44,7 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
 
 <h1 class="h3 mb-3">Edit Testimonial #<?= $id ?></h1>
 
@@ -92,4 +93,5 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <a href="<?= BASE_URL ?>/pages/testimonials/list.php" class="btn btn-secondary">Cancel</a>
 </form>
 
+</div>
 <?php require_once BASE_PATH . '/templates/script.php';?>

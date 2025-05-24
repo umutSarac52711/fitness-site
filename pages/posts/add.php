@@ -14,14 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = trim($_POST['content']);
     $created_at = $_POST['created_at'] ?: date('Y-m-d H:i:s');
     $updated_at = $_POST['updated_at'] ?: null;
+    $slug = make_slug($title);
 
-    $sql = 'INSERT INTO posts (author_id, title, content, created_at, updated_at) VALUES (:author_id, :title, :content, :created_at, :updated_at)';
+    $sql = 'INSERT INTO posts (author_id, title, content, created_at, updated_at, slug) VALUES (:author_id, :title, :content, :created_at, :updated_at, :slug)';
     $pdo->prepare($sql)->execute([
         ':author_id' => $author_id,
         ':title' => $title,
         ':content' => $content,
         ':created_at' => $created_at,
-        ':updated_at' => $updated_at
+        ':updated_at' => $updated_at,
+        'slug'=> $slug
     ]);
 
     header('Location: ' . BASE_URL . '/pages/posts/list.php');
@@ -31,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
+
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
 
 <h1 class="h3 mb-3">New Post</h1>
 
@@ -71,5 +75,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <button class="btn btn-primary">Add Post</button>
   <a href="<?= BASE_URL ?>/pages/posts/list.php" class="btn btn-secondary">Cancel</a>
 </form>
+
+</div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

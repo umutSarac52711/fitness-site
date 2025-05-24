@@ -17,6 +17,8 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+
 <div class="main-content container py-4">
   <div class="card shadow-sm mb-4">
     <div class="card-body pb-0">
@@ -63,4 +65,5 @@ require_once BASE_PATH . '/templates/header-admin.php';
   </div>
 </div>
 
+</div>
 <?php require_once BASE_PATH . '/templates/script.php';?>

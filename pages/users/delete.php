@@ -19,6 +19,8 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+
 <h1 class="h4">Deactivate User #<?= $id ?>?</h1>
 <p class="text-danger">This will deactivate the user but not delete their data. Continue?</p>
 
@@ -27,5 +29,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <button class="btn btn-danger">Yes, deactivate</button>
   <a href="<?= BASE_URL ?>/pages/users/list.php" class="btn btn-secondary">Cancel</a>
 </form>
+</div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

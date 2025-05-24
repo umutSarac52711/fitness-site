@@ -1,5 +1,4 @@
-
-    <!-- Offcanvas Menu Section Begin -->
+<!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>    <?php
     // Helper function to check if current page matches a link
     function isCurrentPage($link) {
@@ -56,10 +55,10 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-youtube-play"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.facebook.com/TEDUniversity"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/ted_uni"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.youtube.com/user/TEDUChannel"><i class="fa fa-youtube-play"></i></a>
+            <a href="https://www.instagram.com/universityted/"><i class="fa fa-instagram"></i></a>
         </div>
     </div>
     <!-- Offcanvas Menu Section End -->
@@ -67,14 +66,15 @@
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="<?= BASE_URL ?>/index.php">
-                            <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="">
+                            <img src="<?= BASE_URL ?>/assets/img/logo.png" alt="Fitness Logo">
                         </a>
                     </div>
-                </div>                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
                             <li<?= isCurrentPage('/index.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/index.php">Home</a></li>
@@ -82,31 +82,27 @@
                             <li<?= isCurrentPage('/pages/static/class-details.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
                             <li<?= isCurrentPage('/pages/static/services.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
                             <li<?= isCurrentPage('/pages/static/team.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
-                            <li<?= (isCurrentPage('/pages/static/class-timetable.php') || 
-                                  isCurrentPage('/pages/static/bmi-calculator.php') || 
-                                  isCurrentPage('/pages/static/gallery.php') || 
-                                  isCurrentPage('/pages/static/blog.php')) ? ' class="active"' : '' ?>><a href="#">Pages</a>
+                            <li><a href="#">Pages</a>
                                 <ul class="dropdown">
+                                    <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About us</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">BMI Calculator</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>                                    <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our Blog</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
                                 </ul>
                             </li>
-                            <li<?= isCurrentPage('/pages/static/contact.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
-
                             <?php if (empty($_SESSION['user'])): ?>
-                                <li<?= isCurrentPage('/login.php') ? ' class="active"' : '' ?> class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/login.php">Login</a></li>
-                                <li<?= isCurrentPage('/register.php') ? ' class="active"' : '' ?> class="nav-item"><a class="nav-link" href="<?= BASE_URL ?>/register.php">Register</a></li>
-                            <?php elseif ($_SESSION['user']['role'] !== 'admin'): ?>
-                                <li>
-                                  <a href="#">
-                                    <?= htmlspecialchars($_SESSION['user']['name']) ?>
-                                  </a>
-                                  <ul class="dropdown">
-                                    <li><a href="<?= BASE_URL ?>/logout.php">Logout</a></li>
-                                  </ul>
-                                </li>      <?php endif; ?>
+                                <li<?= isCurrentPage('/login.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/login.php">Login</a></li>
+                                <li<?= isCurrentPage('/register.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/register.php">Register</a></li>
+                            <?php elseif (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] !== 'admin'): ?>
+                                <li><a href="#"><?= htmlspecialchars($_SESSION['user']['name']) ?></a>
+                                    <ul class="dropdown">
+                                        <li><a href="<?= BASE_URL ?>/logout.php">Logout</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </nav>
                 </div>
@@ -128,7 +124,6 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
-
         <?php if (isset($_SESSION['user']) && $_SESSION['user']['role']==='admin'): ?>
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -155,7 +150,6 @@
             </div>
         </div>
         <?php endif?>
-
     </header>
     <!-- Header End -->
     

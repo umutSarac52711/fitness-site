@@ -7,22 +7,21 @@
                 <div class="col-md-4">
                     <div class="gt-text">
                         <i class="fa fa-map-marker"></i>
-                        <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
+                        <p>TED University. Ziya Gökalp Caddesi No:48<br/> 06420, Kolej Çankaya - Ankara</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="gt-text">
                         <i class="fa fa-mobile"></i>
                         <ul>
-                            <li>125-711-811</li>
-                            <li>125-668-886</li>
+                            <li>+90 (312) 585 03 62</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="gt-text email">
                         <i class="fa fa-envelope"></i>
-                        <p>Support.gymcenter@gmail.com</p>
+                        <p>sti@tedu.edu.tr</p>
                     </div>
                 </div>
             </div>
@@ -39,14 +38,13 @@
                         <div class="fa-logo">
                             <a href="#"><img src="<?= BASE_URL ?>/assets/img/logo.png" alt=""></a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore dolore magna aliqua endisse ultrices gravida lorem.</p>
+                        <p>Experience TEDU Gym—your university’s premier fitness hub. Elevate your campus life with cutting-edge facilities and expert guidance tailored to help you achieve academic and athletic excellence.</p>
                         <div class="fa-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa  fa-envelope-o"></i></a>
+                            <a href="https://www.facebook.com/TEDUniversity"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/ted_uni"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/user/TEDUChannel"><i class="fa fa-youtube-play"></i></a>
+                            <a href="https://www.instagram.com/universityted/"><i class="fa fa-instagram"></i></a>
+                            <a href="mailto:sti@tedu.edu.tr"><i class="fa  fa-envelope-o"></i></a>
                         </div>
                     </div>
                 </div>
@@ -54,10 +52,10 @@
                     <div class="fs-widget">
                         <h4>Useful links</h4>
                         <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Classes</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Blog</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
+                            <li><a href="<?= BASE_URL ?>/pages/static/contact.php">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -65,30 +63,10 @@
                     <div class="fs-widget">
                         <h4>Support</h4>
                         <ul>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Subscribe</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?= BASE_URL ?>/login.php">Login</a></li>
+                            <li><a href="<?= BASE_URL ?>/account.php">My account</a></li>
+                            <li><a href="<?= BASE_URL ?>#pricing">Subscribe</a></li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="fs-widget">
-                        <h4>Tips & Guides</h4>
-                        <div class="fw-recent">
-                            <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                        <div class="fw-recent">
-                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

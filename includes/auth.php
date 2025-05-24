@@ -16,6 +16,7 @@ function require_login() {
 }
 function require_admin() {
     require_login();
+    
     if ($_SESSION['user']['role'] !== 'admin') {
         header('Location: ' . BASE_URL . '/index.php');
         exit;

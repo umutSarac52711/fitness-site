@@ -42,6 +42,8 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+
 <h1 class="h3 mb-3">Edit Progress Log #<?= $id ?></h1>
 
 <p class="text-danger">Please ensure the data is correct before submitting.</p>
@@ -80,5 +82,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
     <a href="<?= BASE_URL ?>/pages/progress/list.php" class="btn btn-secondary">Cancel</a>
   </div>
 </form>
+
+</div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

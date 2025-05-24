@@ -45,6 +45,7 @@ $page_title = 'Edit User';
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
 
 <h1 class="h3 mb-4">Edit User #<?= $id ?></h1>
 
@@ -88,4 +89,5 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <a href="<?= BASE_URL ?>/pages/users/list.php" class="btn btn-secondary">Cancel</a>
 </form>
 
+</div>
 <?php require_once BASE_PATH . '/templates/script.php';?>

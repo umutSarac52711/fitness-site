@@ -7,53 +7,50 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
 ?>
 
 <!-- ChooseUs Section Begin -->
-<section class="chooseus-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <span>Why choose us?</span>
-                    <h2>PUSH YOUR LIMITS FORWARD</h2>
+    <section class="choseus-section spad" id="ChooseUs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Why chose us?</span>
+                        <h2>PUSH YOUR LIMITS FORWARD</h2>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-034-stationary-bike"></span>
+                        <h4>State-of-the-Art Equipment</h4>
+                        <p>Experience cutting-edge machines and weights designed to meet the rigorous standards of today's university athletes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-033-juice"></span>
+                        <h4>Tailored Student Nutrition</h4>
+                        <p>Access customized nutrition guidance and meal plans that keep you energized during long study sessions and intense workouts.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-002-dumbell"></span>
+                        <h4>Personalized Training Programs</h4>
+                        <p>Benefit from expert coaching and training sessions developed specifically for university students looking to balance fitness with academics.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="cs-item">
+                        <span class="flaticon-014-heart-beat"></span>
+                        <h4>Campus Community & Wellness</h4>
+                        <p>Join a vibrant community fostering health, fitness, and academic excellence, with events and challenges that unite students on campus.</p>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-034-stationary-bike"></span>
-                    <h4>Modern equipment</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        dolore facilisis.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-033-juice"></span>
-                    <h4>Healthy nutrition plan</h4>
-                    <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                        facilisis.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-002-dumbell"></span>
-                    <h4>Proffesponal training plan</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        dolore facilisis.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-014-heart-beat"></span>
-                    <h4>Unique to your needs</h4>
-                    <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                        facilisis.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ChooseUs Section End -->
+    </section>
+    <!-- ChooseUs Section End -->
 
 <!-- About Us Section Begin -->
 <section class="aboutus-section">

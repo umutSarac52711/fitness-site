@@ -21,6 +21,8 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+
 <h1 class="h4">Delete Plan #<?= $id ?>?</h1>
 <p class="text-danger">This action cannot be undone.</p>
 
@@ -29,5 +31,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <button class="btn btn-danger">Yes, delete</button>
   <a href="<?= BASE_URL ?>/pages/plans/list.php" class="btn btn-secondary">Cancel</a>
 </form>
+
+</div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

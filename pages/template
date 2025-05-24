@@ -17,7 +17,7 @@
  │   ├ edit.php
  │   └ delete.php
  │
- ├─ posts/
+ ├─ posts/  
  │   ├ list.php      ← Lists all posts
  │   ├ view.php      ← Single-post + comments (R + Create comment)
  │   ├ add.php       ← Create post

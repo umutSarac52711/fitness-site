@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     }
     $error='Invalid login';
 }
+
 $page_title='Login';
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';

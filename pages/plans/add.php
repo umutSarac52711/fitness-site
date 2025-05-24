@@ -32,6 +32,7 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
+<div style="padding: 90px;">
 <h1 class="h3 mb-3">New Membership Plan</h1>
 
 <form method="POST" class="needs-validation" novalidate>
@@ -70,6 +71,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <a href="<?= BASE_URL ?>/pages/plans/list.php"
      class="btn btn-secondary">Cancel</a>
 </form>
-
+</div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

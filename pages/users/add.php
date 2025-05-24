@@ -39,6 +39,8 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
+<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+
 <h1 class="h3 mb-4">Create New User</h1>
 
 <form method="POST" class="needs-validation" novalidate>
@@ -75,6 +77,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <button type="submit" class="btn btn-success">Create User</button>
   <a href="<?= BASE_URL ?>/pages/users/list.php" class="btn btn-secondary ms-2">Cancel</a>
 </form>
+</div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>
 
