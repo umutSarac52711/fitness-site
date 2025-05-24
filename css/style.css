@@ -37,7 +37,7 @@ body {
 	height: 100%;
 	font-family: "Muli", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
+	/*font-smoothing: antialiased;*/
 }
 
 body {
@@ -1081,7 +1081,7 @@ ol {
 .gt-text i {
 	font-size: 30px;
 	color: #ffffff;
-	display: inline-block;
+	/*display: inline-block;*/
 	height: 65px;
 	width: 65px;
 	background: #008af3;
@@ -2591,7 +2591,7 @@ ol {
 .contact-widget .cw-text i {
 	font-size: 30px;
 	color: #008af3;
-	display: inline-block;
+	/*display: inline-block;*/
 	height: 65px;
 	width: 65px;
 	background: #363636;

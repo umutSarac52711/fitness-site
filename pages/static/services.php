@@ -88,11 +88,11 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
     </section>
     Banner Section End -->
 
-    <!-- Pricing Section Begin -->
+    
     
     <?php require_once BASE_PATH . '/templates/pricing.php'; ?>
     
-    <!-- Pricing Section End -->
+    
 
 <?php require_once BASE_PATH . '/templates/footer.php'; 
 require_once BASE_PATH . '/templates/script.php';?>
