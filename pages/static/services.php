@@ -12,59 +12,57 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <span>What we do?</span>
-                        <h2>PUSH YOUR LIMITS FORWARD</h2>
+                        <span>Our Campus Offerings</span>
+                        <h2>YOUR UNIVERSITY FITNESS & WELLNESS CENTER</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3 order-lg-1 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="<?= BASE_URL ?>/assets/img/services/services-1.jpg" alt="">
+                        <img src="<?= BASE_URL ?>/assets/img/services/services-1.jpg" alt="Student Fitness Programs">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-2 col-md-6 p-0">
                     <div class="ss-text">
-                        <h4>Personal training</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut dolore
-                            facilisis.</p>
+                        <h4>Student Fitness Programs</h4>
+                        <p>Customized training plans and guidance to help you achieve your fitness goals effectively.</p>
                         <a href="#">Explore</a>
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-3 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="<?= BASE_URL ?>/assets/img/services/services-2.jpg" alt="">
+                        <img src="<?= BASE_URL ?>/assets/img/services/services-2.jpg" alt="Group Exercise Classes">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-4 col-md-6 p-0">
                     <div class="ss-text">
-                        <h4>Group fitness classes</h4>
-                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus.</p>
+                        <h4>Group Exercise Classes</h4>
+                        <p>Join dynamic classes like Yoga, Zumba, Cycling, and HIIT, led by certified instructors.</p>
                         <a href="#">Explore</a>
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-8 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="<?= BASE_URL ?>/assets/img/services/services-4.jpg" alt="">
+                        <img src="<?= BASE_URL ?>/assets/img/services/services-4.jpg" alt="Open Gym & Modern Equipment">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-7 col-md-6 p-0">
                     <div class="ss-text second-row">
-                        <h4>Body building</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut dolore
-                            facilisis.</p>
+                        <h4>Open Gym & Modern Equipment</h4>
+                        <p>Access our well-equipped gym featuring a wide range of cardio and strength machines.</p>
                         <a href="#">Explore</a>
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-6 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="<?= BASE_URL ?>/assets/img/services/services-3.jpg" alt="">
+                        <img src="<?= BASE_URL ?>/assets/img/services/services-3.jpg" alt="Intramural & Club Sports">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-5 col-md-6 p-0">
                     <div class="ss-text second-row">
-                        <h4>Strength training</h4>
-                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus.</p>
+                        <h4>Intramural & Club Sports</h4>
+                        <p>Participate in friendly competition with intramural leagues or join a university sports club.</p>
                         <a href="#">Explore</a>
                     </div>
                 </div>
@@ -73,7 +71,7 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
     </section>
     <!-- Services Section End -->
 
-    <!-- Banner Section Begin -->
+    <!-- Banner Section Begin 
     <section class="banner-section set-bg" data-setbg="<?= BASE_URL ?>/assets/img/banner-bg.jpg">
         <div class="container">
             <div class="row">
@@ -88,80 +86,12 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
             </div>
         </div>
     </section>
-    <!-- Banner Section End -->
+    Banner Section End -->
 
     <!-- Pricing Section Begin -->
-    <section class="pricing-section service-pricing spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>Our Plan</span>
-                        <h2>Choose your pricing plan</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-8">
-                    <div class="ps-item">
-                        <h3>Class drop-in</h3>
-                        <div class="pi-price">
-                            <h2>$ 39.0</h2>
-                            <span>SINGLE CLASS</span>
-                        </div>
-                        <ul>
-                            <li>Free riding</li>
-                            <li>Unlimited equipments</li>
-                            <li>Personal trainer</li>
-                            <li>Weight losing classes</li>
-                            <li>Month to mouth</li>
-                            <li>No time restriction</li>
-                        </ul>
-                        <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-                        <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-8">
-                    <div class="ps-item">
-                        <h3>12 Month unlimited</h3>
-                        <div class="pi-price">
-                            <h2>$ 99.0</h2>
-                            <span>SINGLE CLASS</span>
-                        </div>
-                        <ul>
-                            <li>Free riding</li>
-                            <li>Unlimited equipments</li>
-                            <li>Personal trainer</li>
-                            <li>Weight losing classes</li>
-                            <li>Month to mouth</li>
-                            <li>No time restriction</li>
-                        </ul>
-                        <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-                        <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-8">
-                    <div class="ps-item">
-                        <h3>6 Month unlimited</h3>
-                        <div class="pi-price">
-                            <h2>$ 59.0</h2>
-                            <span>SINGLE CLASS</span>
-                        </div>
-                        <ul>
-                            <li>Free riding</li>
-                            <li>Unlimited equipments</li>
-                            <li>Personal trainer</li>
-                            <li>Weight losing classes</li>
-                            <li>Month to mouth</li>
-                            <li>No time restriction</li>
-                        </ul>
-                        <a href="#" class="primary-btn pricing-btn">Enroll now</a>
-                        <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+    <?php require_once BASE_PATH . '/templates/pricing.php'; ?>
+    
     <!-- Pricing Section End -->
 
 <?php require_once BASE_PATH . '/templates/footer.php'; 

@@ -1,7 +1,5 @@
 <!-- Offcanvas Menu Section Begin -->
-    <div class="offcanvas-menu-overlay"></div>    <?php
-    
-    ?>
+    <div class="offcanvas-menu-overlay"></div>
     
     <div class="offcanvas-menu-wrapper">
         <div class="canvas-close">
@@ -21,10 +19,9 @@
                 <li<?= isCurrentPage('/pages/static/team.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="dropdown">
-                        <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About us</a></li>
                         <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
                         <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li>
+                        <!-- <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li> -->
                         <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
                         <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
                         <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
@@ -91,10 +88,9 @@
                             <li<?= isCurrentPage('/pages/static/team.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="<?= BASE_URL ?>/pages/static/about-us.php">About us</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li>
+                                    <!-- <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li> -->
                                     <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
