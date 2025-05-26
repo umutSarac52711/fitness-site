@@ -17,6 +17,23 @@ function check_csrf() {
         }
     }
 }
+function get_latest_posts(int $limit = 5): array
+{
+  
+    global $db;                 
+
+    $sql = "SELECT id, title, slug, created_at, thumbnail 
+            FROM posts 
+            WHERE is_published = 1
+            ORDER BY created_at DESC
+            LIMIT :lim";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':lim', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 function make_slug(string $text): string {
     // 1) Convert to ASCII (drops accents, e.g. “é” → “e”)
