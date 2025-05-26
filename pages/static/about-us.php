@@ -4,6 +4,7 @@ require_once '../../config.php';
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 require_once BASE_PATH . '/templates/breadcrumb.php';
+include BASE_PATH . '/templates/trainers-section.php';
 ?>
 
 <!-- ChooseUs Section Begin -->

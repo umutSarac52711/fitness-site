@@ -85,4 +85,13 @@ function redirect(string $url) {
     header("Location: " . $url);
     exit;
 }
+function get_trainers(): array
+{
+    global $db;                        // PDO veya mysqli nesnen
+    $sql = "SELECT id, full_name, avatar
+            FROM users
+            WHERE role = 'trainer' AND is_active = 1";
+    return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
