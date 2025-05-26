@@ -4,6 +4,8 @@ require_once '../../config.php';
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 require_once BASE_PATH . '/templates/breadcrumb.php';
+ include BASE_PATH . '/templates/sidebar-latest.php'; 
+
 ?>
 
     <!-- Class Details Section Begin -->
@@ -40,53 +42,7 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                                 <li><a href="#">Nutrition <span>15</span></a></li>
                             </ul>
                         </div>
-                        <div class="so-latest">
-                            <h5 class="title">Latest posts</h5>
-                            <div class="latest-large set-bg" data-setbg="<?= BASE_URL ?>/assets/img/latest-blog/latest-1.jpg">
-                                <div class="ll-text">
-                                    <h5><a href="#">This Japanese Way of Making Iced Coffee Is a Game...</a></h5>
-                                    <ul>
-                                        <li>Aug 20, 2019</li>
-                                        <li>20 Comment</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="latest-item">
-                                <div class="li-pic">
-                                    <img src="<?= BASE_URL ?>/assets/img/latest-blog/latest-2.jpg" alt="">
-                                </div>
-                                <div class="li-text">
-                                    <h6><a href="#">Grilled Potato and Green Bean Salad</a></h6>
-                                    <span class="li-time">Aug 15, 2019</span>
-                                </div>
-                            </div>
-                            <div class="latest-item">
-                                <div class="li-pic">
-                                    <img src="<?= BASE_URL ?>/assets/img/latest-blog/latest-3.jpg" alt="">
-                                </div>
-                                <div class="li-text">
-                                    <h6><a href="#">The $8 French Rosé I Buy in Bulk Every Summer</a></h6>
-                                    <span class="li-time">Aug 15, 2019</span>
-                                </div>
-                            </div>
-                            <div class="latest-item">
-                                <div class="li-pic">
-                                    <img src="<?= BASE_URL ?>/assets/img/latest-blog/latest-4.jpg" alt="">
-                                </div>
-                                <div class="li-text">
-                                    <h6><a href="#">Ina Garten's Skillet-Roasted Lemon Chicken</a></h6>
-                                    <span class="li-time">Aug 15, 2019</span>
-                                </div>
-                            </div>
-                            <div class="latest-item">
-                                <div class="li-pic">
-                                    <img src="<?= BASE_URL ?>/assets/img/latest-blog/latest-5.jpg" alt="">
-                                </div>
-                                <div class="li-text">
-                                    <h6><a href="#">The Best Weeknight Baked Potatoes, 3 Creative Ways</a></h6>
-                                    <span class="li-time">Aug 15, 2019</span>
-                                </div>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>
