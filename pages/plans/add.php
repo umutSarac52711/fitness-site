@@ -31,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
-
-<div style="padding: 90px;">
+<div class="admin-content-area-wrapper"> <?php // Admin background wrapper ?>
+<div class="admin-main-content-block" style="padding: 20px;"> <?php // Applied dark content block and adjusted padding ?>
 <h1 class="h3 mb-3">New Membership Plan</h1>
 
 <form method="POST" class="needs-validation" novalidate>
@@ -72,5 +72,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
      class="btn btn-secondary">Cancel</a>
 </form>
 </div>
+</div> <?php // End admin background wrapper ?>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

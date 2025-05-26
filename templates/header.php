@@ -16,14 +16,12 @@
                 <li<?= isCurrentPage('/pages/static/about-us.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
                 <li<?= isCurrentPage('/pages/static/class-details.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
                 <li<?= isCurrentPage('/pages/static/services.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
-                <li<?= isCurrentPage('/pages/static/team.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
+                <li<?= isCurrentPage('/pages/static/blog.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/blog.php">Blog</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="dropdown">
-                        <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
-                        <!-- <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li> -->
+                        <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes Timetable</a></li>
+                        <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">BMI Calculator</a></li>
                         <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
-                        <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
                         <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
                     </ul>
                 </li>
@@ -85,14 +83,12 @@
                             <li<?= isCurrentPage('/pages/static/about-us.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/about-us.php">About Us</a></li>
                             <li<?= isCurrentPage('/pages/static/class-details.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/class-details.php">Classes</a></li>
                             <li<?= isCurrentPage('/pages/static/services.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/services.php">Services</a></li>
-                            <li<?= isCurrentPage('/pages/static/team.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/team.php">Our Team</a></li>
+                            <li<?= isCurrentPage('/pages/static/blog.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/static/blog.php">Blog</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes timetable</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">Bmi calculate</a></li>
-                                    <!-- <li><a href="<?= BASE_URL ?>/pages/static/team.php">Our team</a></li> -->
+                                    <li><a href="<?= BASE_URL ?>/pages/static/class-timetable.php">Classes Timetable</a></li>
+                                    <li><a href="<?= BASE_URL ?>/pages/static/bmi-calculator.php">BMI Calculator</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/gallery.php">Gallery</a></li>
-                                    <li><a href="<?= BASE_URL ?>/pages/static/blog.php">Our blog</a></li>
                                     <li><a href="<?= BASE_URL ?>/pages/static/404.php">404</a></li>
                                 </ul>
                             </li>

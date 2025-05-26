@@ -15,8 +15,8 @@ $posts = $stmt->fetchAll();
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
-<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
-<div class="main-content container py-4">
+<div class="admin-content-area-wrapper"> <?php // Admin background wrapper ?>
+<div class="main-content container admin-main-content-block" style="padding-top: 20px; padding-left: auto;"> <?php // Applied dark content block and adjusted padding for the outer container ?>
   <div class="card shadow-sm mb-4">
     <div class="card-body pb-0">
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -56,7 +56,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
     </div>
   </div>
 </div>
-
-</div>
+</div> <?php // End admin background wrapper ?>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

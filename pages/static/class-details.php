@@ -17,59 +17,14 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                         </div>
                         <div class="cd-text">
                             <div class="cd-single-item">
-                                <h3>Body Building</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua accusantium doloremque
-                                    laudantium. Excepteur sint occaecat cupidatat non proident sculpa.</p>
+                                <h3>University Fitness Programs</h3>
+                                <p>Our university gym offers a wide range of fitness programs tailored to student needs. From high-intensity interval training (HIIT) and strength conditioning to yoga and Zumba, there's something for everyone. We provide access to state-of-the-art equipment and dedicated spaces for various activities, ensuring you have the resources to achieve your health and wellness goals while balancing your academic life.</p>
                             </div>
                             <div class="cd-single-item">
-                                <h3>Trainer</h3>
-                                <p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur officia
-                                    deserunt mollit.</p>
+                                <h3>Our Certified Trainers</h3>
+                                <p>Meet our team of certified and experienced trainers, many of whom are kinesiology students or graduates. They are passionate about fitness and dedicated to helping you on your journey, whether you're a beginner or an experienced athlete. Our trainers can assist with personalized workout plans, proper technique, and nutritional advice to ensure you get the most out of your gym sessions safely and effectively.</p>
                             </div>
-                        </div>
-                        <div class="cd-trainer">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="cd-trainer-pic">
-                                        <img src="<?= BASE_URL ?>/assets/img/classes/class-details/trainer-profile.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="cd-trainer-text">
-                                        <div class="trainer-title">
-                                            <h4>Athart Rachel</h4>
-                                            <span>Gym Trainer</span>
-                                        </div>
-                                        <div class="trainer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                            <a href="#"><i class="fa fa-instagram"></i></a>
-                                            <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
-                                            vel facilisis.</p>
-                                        <ul class="trainer-info">
-                                            <li><span>Age</span>35</li>
-                                            <li><span>Weight</span>148lbs</li>
-                                            <li><span>Height</span>10' 2``</li>
-                                            <li><span>Occupation</span>no-founder</li>
-                                        </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
-                                            vel facilisis. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div>  
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-8">
@@ -133,9 +88,6 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="so-banner set-bg" data-setbg="<?= BASE_URL ?>/assets/img/sidebar-banner.jpg">
-                            <h5>Banner 300x300</h5>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -144,149 +96,35 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
     <!-- Class Details Section End -->
 
     <!-- Class Timetable Section Begin -->
-    <section class="class-timetable-section class-details-timetable spad">
+    <section class="class-timetable-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="class-details-timetable_title">
-                        <h5>Classes timetable</h5>
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <span>All Classes</span>
+                        <h2>Find Your Time</h2>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="class-timetable details-timetable">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Monday</th>
-                                    <th>Tuesday</th>
-                                    <th>Wednesday</th>
-                                    <th>Thursday</th>
-                                    <th>Friday</th>
-                                    <th>Saturday</th>
-                                    <th>Sunday</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="class-time">6.00am - 8.00am</td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Weight Loss</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Yoga</h5>
-                                        <span>Keaf Shen</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Fitness</h5>
-                                        <span>Kimberly Stone</span>
-                                    </td>
-                                    <td class="dark-bg blank-td"></td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Body Building</h5>
-                                        <span>Robert Cage</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="class-time">10.00am - 12.00am</td>
-                                    <td class="blank-td"></td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Fitness</h5>
-                                        <span>Kimberly Stone</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Weight Loss</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Body Building</h5>
-                                        <span>Robert Cage</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Karate</h5>
-                                        <span>Donald Grey</span>
-                                    </td>
-                                    <td class="blank-td"></td>
-                                </tr>
-                                <tr>
-                                    <td class="class-time">5.00pm - 7.00pm</td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Karate</h5>
-                                        <span>Donald Grey</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Body Building</h5>
-                                        <span>Robert Cage</span>
-                                    </td>
-                                    <td class="blank-td"></td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Yoga</h5>
-                                        <span>Keaf Shen</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Fitness</h5>
-                                        <span>Kimberly Stone</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="class-time">7.00pm - 9.00pm</td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg blank-td"></td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Yoga</h5>
-                                        <span>Keaf Shen</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Karate</h5>
-                                        <span>Donald Grey</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Weight Loss</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <!-- Add filter mechanics If you CARE -->
+                <!-- Category-based filters removed as category field is removed
+                <div class="col-lg-6">
+                    <div class="table-controls">
+                        <ul>
+                            <li class="active" data-tsfilter="all">All event</li>
+                            <li data-tsfilter="fitness">Fitness tips</li>
+                            <li data-tsfilter="motivation">Motivation</li>
+                            <li data-tsfilter="workout">Workout</li>
+                        </ul>
                     </div>
                 </div>
+                -->
             </div>
+            <?php require_once BASE_PATH . '/templates/class-timetable-view.php'; ?>
         </div>
     </section>
     <!-- Class Timetable Section End -->
 
-<?php include_once BASE_PATH . '/templates/footer.php';
+
+<?php
+include_once BASE_PATH . '/templates/footer.php';
 require_once BASE_PATH . '/templates/script.php';?>

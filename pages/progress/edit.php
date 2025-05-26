@@ -42,7 +42,8 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
-<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+<div class="admin-content-area-wrapper">
+    <div class="main-content container admin-main-content-block">
 
 <h1 class="h3 mb-3">Edit Progress Log #<?= $id ?></h1>
 
@@ -83,6 +84,7 @@ require_once BASE_PATH . '/templates/header-admin.php';
   </div>
 </form>
 
+    </div>
 </div>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

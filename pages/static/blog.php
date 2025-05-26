@@ -1,6 +1,8 @@
 <?php
 $page_title = "Blog";
 require_once '../../config.php';
+require_once BASE_PATH . '/includes/auth.php'; // For is_logged_in() and session access
+require_once BASE_PATH . '/includes/functions.php'; // For utility functions
 
 $stmt = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
 $posts = $stmt->fetchAll();
@@ -13,6 +15,14 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
     <!-- Blog Section Begin -->
     <section class="blog-section spad">
         <div class="container">
+            <?php
+            // Check if user is logged in and has admin or trainer role
+            if (isset($_SESSION['user']) && ($_SESSION['user']['role'] === 'admin' || $_SESSION['user']['role'] === 'trainer')) :
+            ?>
+                <div class="mb-4 text-right">
+                    <a href="<?= BASE_URL ?>/pages/posts/create.php" class="primary-btn">Create New Post</a>
+                </div>
+            <?php endif; ?>
             <div class="row">
                 <div class="col-lg-8 p-0">
                     <?php
@@ -33,7 +43,7 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                             </div>
                             <div class="bi-text">
                                 <h5>
-                                    <a href="<?= BASE_URL ?>/pages/static/blog.details.php?id=<?= $post['id'] ?>">
+                                    <a href="<?= BASE_URL ?>/pages/static/blog-details.php?slug=<?= htmlspecialchars($post['slug']) ?>">
                                         <?= htmlspecialchars($post['title']) ?>
                                     </a>
                                 </h5>

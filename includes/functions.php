@@ -1,4 +1,8 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 function csrf_token() {
     if (empty($_SESSION['csrf'])) {
         $_SESSION['csrf'] = bin2hex(random_bytes(16));
@@ -35,4 +39,33 @@ function isCurrentPage($link) {
         $link = str_replace(BASE_URL, '', $link);
         return (strpos($currentPage, $link) !== false);
     }
+
+function set_flash_message(string $message, string $type = 'info') {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start(); // Ensure session is started
+    }
+    $_SESSION['flash_messages'][] = ['message' => $message, 'type' => $type];
+}
+
+function display_flash_message() {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start(); // Ensure session is started
+    }
+    if (isset($_SESSION['flash_messages'])) {
+        foreach ($_SESSION['flash_messages'] as $flash_message) {
+            $alert_type = htmlspecialchars($flash_message['type']);
+            $message = htmlspecialchars($flash_message['message']);
+            echo "<div class='alert alert-{$alert_type} alert-dismissible fade show' role='alert'>
+                    {$message}
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                  </div>";
+        }
+        unset($_SESSION['flash_messages']); // Clear messages after displaying
+    }
+}
+
+function redirect(string $url) {
+    header("Location: " . $url);
+    exit;
+}
 

@@ -148,3 +148,135 @@
         .logout-btn:hover {
              background-color: #333;
         }
+
+        /* Admin Dashboard Card Colors */
+        .dashboard-card {
+            color: #e9ecef; /* Light text color for dark cards */
+        }
+
+        .dashboard-card .card-title {
+            color: #ffffff;
+        }
+
+        .dashboard-card .btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #f8f9fa;
+        }
+        .dashboard-card .btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+
+        /* If a card needs a dark button for contrast (e.g. on a very light custom background) */
+        .dashboard-card.light-card-bg .btn {
+            background-color: #343a40; /* Dark button */
+            border-color: #343a40;
+            color: #ffffff;
+        }
+        .dashboard-card.light-card-bg .btn:hover {
+            background-color: #23272b;
+            border-color: #1d2124;
+        }
+
+
+        .card-bg-custom-1 { background-color: #2a3b4c; } /* Dark Slate Blue */
+        .card-bg-custom-2 { background-color: #3a506b; } /* Independence Blue */
+        .card-bg-custom-3 { background-color: #5c9ead; } /* Cadet Blue - might be lighter */
+        .card-bg-custom-4 { background-color: #6d6875; } /* Dark Purple/Gray */
+        .card-bg-custom-5 { background-color: #b07d62; } /* Brownish/Tan - might be lighter */
+        .card-bg-custom-6 { background-color: #436443; } /* Dark Slate Gray */
+
+        /* Ensure card text is readable on these backgrounds */
+        .dashboard-card.card-bg-custom-1 .card-text,
+        .dashboard-card.card-bg-custom-2 .card-text,
+        .dashboard-card.card-bg-custom-4 .card-text,
+        .dashboard-card.card-bg-custom-6 .card-text {
+            color: #e9ecef !important; 
+        }
+        .dashboard-card.card-bg-custom-1 .card-title,
+        .dashboard-card.card-bg-custom-2 .card-title, 
+        .dashboard-card.card-bg-custom-4 .card-title,
+        .dashboard-card.card-bg-custom-6 .card-title {
+            color: #ffffff !important; 
+        }
+
+        /* Adjustments for potentially lighter custom backgrounds */
+        .dashboard-card.card-bg-custom-3 .card-text,
+        .dashboard-card.card-bg-custom-5 .card-text {
+            color: #212529 !important; /* Darker text for lighter backgrounds */
+        }
+        .dashboard-card.card-bg-custom-3 .card-title,
+        .dashboard-card.card-bg-custom-5 .card-title {
+           color: #000000 !important; /* Black title for lighter backgrounds */
+        }
+
+        /* Blog Details - Comments Section */
+        .co-text p {
+            color: #c4c4c4; /* Light grey color for better readability on dark backgrounds */
+            margin-bottom: 5px; /* Adjusted from default p styling if needed */
+        }
+
+        .co-text h6 {
+            color: #ffffff; /* White color for commenter's name */
+            margin-bottom: 5px;
+        }
+
+        .co-text span {
+            font-size: 0.8em;
+            color: #a0a0a0; /* Lighter grey for timestamp */
+        }
+
+        .comment-option .co-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333; /* Separator for comments */
+        }
+
+        .comment-option .co-item:last-child {
+            border-bottom: none;
+        }
+
+        .leave-comment h5 {
+            color: #ffffff; /* White for "Leave a comment" title */
+        }
+
+        .leave-comment p a {
+            color: #f36100; /* Theme orange for login link */
+        }
+
+        .leave-comment textarea {
+            color: #c4c4c4; /* Ensure textarea text is also light */
+            background-color: #2a2f34; /* Darker background for textarea */
+            border: 1px solid #454d55;
+        }
+
+        .leave-comment textarea::placeholder {
+            color: #777;
+        }
+
+        /* Ensure flash messages in comments are visible */
+        #leave-comment-section .alert-success {
+            background-color: #28a745;
+            color: #fff;
+            border-color: #28a745;
+        }
+
+        #leave-comment-section .alert-danger {
+            background-color: #dc3545;
+            color: #fff;
+            border-color: #dc3545;
+        }
+
+        #leave-comment-section .alert-warning {
+            background-color: #ffc107;
+            color: #212529;
+            border-color: #ffc107;
+        }
+
+        #leave-comment-section .alert-info {
+            background-color: #17a2b8;
+            color: #fff;
+            border-color: #17a2b8;
+        }

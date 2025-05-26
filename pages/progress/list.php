@@ -17,16 +17,14 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
-<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+<div class="admin-content-area-wrapper">
+    <div class="main-content container admin-main-content-block">
 
-<div class="main-content container py-4">
-  <div class="card shadow-sm mb-4">
-    <div class="card-body pb-0">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h3 mb-0">Progress Logs</h1>
-        <a href="<?= BASE_URL ?>/pages/progress/add.php" class="btn btn-primary">+ New Log</a>
-      </div>
-      <div class="table-responsive">
+<h1 class="h3 mb-3">Progress Logs</h1>
+
+<?php display_flash_message(); ?>
+
+<div class="table-responsive">
         <table class="table table-striped table-hover align-middle mb-0">
           <thead class="table-dark">
             <tr>
@@ -61,9 +59,8 @@ require_once BASE_PATH . '/templates/header-admin.php';
           </tbody>
         </table>
       </div>
+
     </div>
-  </div>
 </div>
 
-</div>
 <?php require_once BASE_PATH . '/templates/script.php';?>

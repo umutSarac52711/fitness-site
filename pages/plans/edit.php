@@ -37,9 +37,8 @@ $page_title = 'Edit Plan';
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
-
-
-<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+<div class="admin-content-area-wrapper"> <?php // Admin background wrapper ?>
+<div class="main-content container admin-main-content-block" style="padding-top: 20px; padding-left: auto;"> <?php // Applied dark content block and adjusted padding ?>
 
 <h1 class="h3 mb-3">Edit Plan #<?= $id ?></h1>
 
@@ -74,5 +73,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
 </form>
 
 </div>
+</div> <?php // End admin background wrapper ?>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

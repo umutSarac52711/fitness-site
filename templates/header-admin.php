@@ -42,11 +42,12 @@
     <!-- Offcanvas Menu Section End -->
 
     <!-- Header Section Begin -->
-    <header class="header-section">
+    <header class="header-section admin-header-active"> <?php // Added admin-header-active class for admin-specific styling ?>
         <div class="container-fluid">
             <div class="row justify-content-center">                <div class="col-lg-10 d-flex align-items-center justify-content-center">
                     <nav class="nav-menu w-100" style="display: flex; justify-content: center;">
                         <ul style="display: flex; gap: 1.5rem; align-items: center; margin: 0 auto;">
+                            <li<?= isCurrentPage('/pages/admin/dashboard.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/admin/dashboard.php">Dashboard</a></li>
                             <li<?= isCurrentPage('/pages/users/list.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/users/list.php">Users</a></li>
                             <li<?= isCurrentPage('/pages/plans/list.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/plans/list.php">Plans</a></li>
                             <li<?= isCurrentPage('/pages/classes/list.php') ? ' class="active"' : '' ?>><a href="<?= BASE_URL ?>/pages/classes/list.php">Classes</a></li>

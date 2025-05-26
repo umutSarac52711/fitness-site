@@ -9,6 +9,10 @@ function login($user) {
     ];
 }
 
+function is_logged_in() {
+    return isset($_SESSION['user']) && !empty($_SESSION['user']);
+}
+
 function logout() { 
     unset($_SESSION['user']); 
     // It's also good practice to destroy the session on logout

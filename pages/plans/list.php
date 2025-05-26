@@ -14,9 +14,8 @@ $plans = $stmt->fetchAll();
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
-
-
-<div class="main-content container" style="padding-top: 90px; padding-left: auto;">
+<div class="admin-content-area-wrapper"> <?php // Admin background wrapper ?>
+<div class="main-content container admin-main-content-block" style="padding-top: 20px; padding-left: auto;"> <?php // Applied dark content block and adjusted padding ?>
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h1 class="h3">Plans</h1>
   <a href="<?= BASE_URL ?>/pages/plans/add.php" class="btn btn-primary">+ New Plan</a>
@@ -45,5 +44,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
   </tbody>
 </table>
 </div>
+</div> <?php // End admin background wrapper ?>
 
 <?php require_once BASE_PATH . '/templates/script.php';?>

@@ -27,15 +27,9 @@ require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header-admin.php';
 ?>
 
-<div class="main-content container-fluid" style="padding-top: 90px; background-color: black; height: 100%;">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="h3">Users</h1>
-      <p class="text-muted">Manage users and their roles.</p>
-    </div>
-  </div>
-
-<div class="container py-4">
+<div class="admin-content-area-wrapper">
+<div class="main-content container-fluid">
+<div class="container py-4 admin-main-content-block">
   <div class="card shadow-sm mb-4">
     <div class="card-body pb-0">
       <div class="d-flex justify-content-between align-items-center mb-3">
@@ -87,5 +81,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
   </div>
 </div>
 
+</div>
 </div>
 <?php require_once BASE_PATH . '/templates/script.php';?>

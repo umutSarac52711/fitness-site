@@ -66,13 +66,10 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                 <div class="about-text">
                     <div class="section-title">
                         <span>About Us</span>
-                        <h2>What we have done</h2>
+                        <h2>Empowering Student Fitness and Wellness</h2>
                     </div>
                     <div class="at-desc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                            viverra maecenas accumsan lacus vel facilisis. aliquip ex ea commodo consequat sit amet,
-                            consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                        <p>Our university gym is dedicated to providing students with top-notch facilities and programs to support their physical and mental well-being. We offer a comprehensive range of equipment, expert-led classes, and personalized training options designed to fit into your busy academic schedule. Join our community to stay active, healthy, and focused on your success.</p>
                     </div>
                     <div class="about-bar">
                         <div class="ab-item">
