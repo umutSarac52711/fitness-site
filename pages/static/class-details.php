@@ -36,7 +36,6 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
               </p>
             </div>
 
-            <!-- Bölüm 2 -->
             <div class="cd-single-item">
               <h3>Our Certified Trainers</h3>
               <p>

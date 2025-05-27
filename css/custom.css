@@ -280,3 +280,11 @@
             color: #fff;
             border-color: #17a2b8;
         }
+
+        .blog-details-text p,span {
+            color: #fff;
+        }
+
+        .blog-details-text ul,ol li {
+            color: #fff;
+        }

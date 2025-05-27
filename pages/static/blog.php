@@ -4,6 +4,17 @@ require_once '../../config.php';
 require_once BASE_PATH . '/includes/auth.php'; // For is_logged_in() and session access
 require_once BASE_PATH . '/includes/functions.php'; // For utility functions
 
+// Attempt to load Parsedown for Markdown rendering
+if (file_exists(BASE_PATH . '/vendor/autoload.php')) {
+    require_once BASE_PATH . '/vendor/autoload.php';
+}
+
+// Instantiate Parsedown if the class exists
+$Parsedown = null;
+if (class_exists('Parsedown')) {
+    $Parsedown = new Parsedown();
+}
+
 $stmt = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
 $posts = $stmt->fetchAll();
 
@@ -39,7 +50,7 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                     ?>
                         <div class="blog-item">
                             <div class="bi-pic">
-                                <img src="<?= BASE_URL ?>/assets/img/blog/blog-1.jpg" alt="">
+                                <img src="<?= BASE_URL ?><?= htmlspecialchars($post['cover_img']) ?>" alt="">
                             </div>
                             <div class="bi-text">
                                 <h5>
@@ -52,7 +63,14 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                                     <li><?= htmlspecialchars($post['created_at']) ?></li>
                                     <li>20 Comment</li>
                                 </ul>
-                                <p><?= htmlspecialchars($post['content']) ?></p>
+                                <?php 
+                                if ($Parsedown) {
+                                    echo $Parsedown->text($post['content']); // Render full content for now
+                                } else {
+                                    // Fallback if Parsedown is not available
+                                    echo nl2br(htmlspecialchars($post['content'])); 
+                                }
+                                ?>
                             </div>
                         </div>
                     <?php endfor; ?>

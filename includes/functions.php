@@ -19,21 +19,63 @@ function check_csrf() {
 }
 function get_latest_posts(int $limit = 5): array
 {
-  
-    global $db;                 
+    global $pdo;
+    $debug_info = [];
 
-    $sql = "SELECT id, title, slug, created_at, thumbnail 
+    if (!$pdo instanceof PDO) {
+        $debug_info[] = "get_latest_posts: PDO connection is not available or not a PDO instance.";
+        return ['data' => [], 'debug' => $debug_info];
+    }
+
+    $sql = "SELECT id, title, slug, created_at, cover_img 
             FROM posts 
-            WHERE is_published = 1
             ORDER BY created_at DESC
             LIMIT :lim";
+    $debug_info[] = "SQL: " . htmlspecialchars($sql);
 
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(':lim', $limit, PDO::PARAM_INT);
-    $stmt->execute();
+    try {
+        $stmt = $pdo->prepare($sql);
+        if (!$stmt) {
+            $debug_info[] = "PDO::prepare() failed. PDO ErrorInfo: " . htmlspecialchars(print_r($pdo->errorInfo(), true));
+            return ['data' => [], 'debug' => $debug_info];
+        }
+        $debug_info[] = "Statement prepared.";
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->bindValue(':lim', $limit, PDO::PARAM_INT);
+        $debug_info[] = "Bound :lim with value: $limit.";
+        
+        $execute_result = $stmt->execute();
+
+        if ($execute_result) {
+            $debug_info[] = "Statement executed successfully.";
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $debug_info[] = "fetchAll(PDO::FETCH_ASSOC) called. Number of posts fetched: " . count($posts) . ".";
+            $rowCount = $stmt->rowCount();
+            $debug_info[] = "PDOStatement::rowCount() after fetchAll: " . $rowCount . ". (Note: rowCount behavior can vary for SELECT).";
+
+            if (count($posts) === 0 && $rowCount > 0) {
+                $debug_info[] = "Warning: rowCount was $rowCount, but fetchAll returned 0 posts.";
+            }
+            if (empty($posts)) {
+                 $debug_info[] = "Posts array is empty after fetchAll.";
+            }
+
+            return ['data' => $posts ?: [], 'debug' => $debug_info];
+        } else {
+            $debug_info[] = "get_latest_posts: Statement execution failed.";
+            $debug_info[] = "Statement ErrorInfo: " . htmlspecialchars(print_r($stmt->errorInfo(), true));
+            return ['data' => [], 'debug' => $debug_info];
+        }
+
+    } catch (PDOException $e) {
+        $debug_info[] = "PDOException in get_latest_posts: " . htmlspecialchars($e->getMessage());
+        return ['data' => [], 'debug' => $debug_info];
+    } catch (Throwable $e) {
+        $debug_info[] = "General Throwable in get_latest_posts: " . htmlspecialchars($e->getMessage());
+        return ['data' => [], 'debug' => $debug_info];
+    }
 }
+
 
 function make_slug(string $text): string {
     // 1) Convert to ASCII (drops accents, e.g. “é” → “e”)
@@ -61,7 +103,10 @@ function set_flash_message(string $message, string $type = 'info') {
     if (session_status() == PHP_SESSION_NONE) {
         session_start(); // Ensure session is started
     }
-    $_SESSION['flash_messages'][] = ['message' => $message, 'type' => $type];
+    $_SESSION['flash_messages'][] = [
+        'message' => htmlspecialchars($message, ENT_QUOTES, 'UTF-8'),
+        'type' => htmlspecialchars($type, ENT_QUOTES, 'UTF-8')
+    ];
 }
 
 function display_flash_message() {
@@ -85,13 +130,31 @@ function redirect(string $url) {
     header("Location: " . $url);
     exit;
 }
+
 function get_trainers(): array
 {
-    global $db;                        // PDO veya mysqli nesnen
-    $sql = "SELECT id, full_name, avatar
+    global $pdo; // Assuming $pdo is your global PDO connection object from config.php
+
+    if (!$pdo) {
+        // Log error or handle missing PDO connection
+        error_log("get_trainers: PDO connection is not available.");
+        return []; // Return empty array or throw an exception
+    }
+
+    $sql = "SELECT id, full_name, profile_picture
             FROM users
-            WHERE role = 'trainer' AND is_active = 1";
-    return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+            WHERE role = 'trainer' AND is_active = 1
+            ORDER BY full_name ASC"; // Added ORDER BY for consistent ordering
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        // Log database error
+        error_log("Error in get_trainers: " . $e->getMessage());
+        return []; // Return empty array on error
+    }
 }
 
 

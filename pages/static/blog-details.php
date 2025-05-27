@@ -3,15 +3,20 @@ require_once __DIR__ . '/../../config.php';
 require_once BASE_PATH . '/includes/functions.php';
 require_once BASE_PATH . '/includes/auth.php'; // For potential author details or logged-in user features
 
+
+//PARSEDOWN
 // Attempt to load Parsedown for Markdown rendering
 if (file_exists(BASE_PATH . '/vendor/autoload.php')) {
     require_once BASE_PATH . '/vendor/autoload.php';
 }
 
+
+//Post initialization
 $post = null;
 $author_name = 'Admin'; // Default author name
 $page_title = "Blog Details"; // Default page title
 
+// Ensure the slug is provided in the URL
 if (!isset($_GET['slug'])) {
     set_flash_message('No blog post specified.', 'danger');
     redirect(BASE_URL . '/pages/static/blog.php');
@@ -19,81 +24,107 @@ if (!isset($_GET['slug'])) {
 
 $slug = $_GET['slug'];
 
+
+// Fetch the blog post from the database using the slug
 try {
+
+    // Prepare the SQL statement to fetch the post by slug
+    // Note: Using PDO prepared statements to prevent SQL injection
     $stmt = $pdo->prepare(
         'SELECT p.*, u.username AS author_username, u.full_name AS author_full_name, u.bio AS author_bio, u.profile_picture AS author_profile_picture ' .
         'FROM posts p ' .
         'LEFT JOIN users u ON p.author_id = u.id ' .
         'WHERE p.slug = :slug'
     );
+
+    // Execute the statement with the provided slug
     $stmt->execute([':slug' => $slug]);
+
+    // Fetch the post data as an associative array
     $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    // Check if the post was found
     if (!$post) {
         set_flash_message('Blog post not found.', 'danger');
         redirect(BASE_URL . '/pages/static/blog.php');
     }
 
+
+    // Set the page title and author name 
     $page_title = htmlspecialchars($post['title']);
     if (!empty($post['author_full_name'])) {
         $author_name = htmlspecialchars($post['author_full_name']);
     } elseif (!empty($post['author_username'])) {
         $author_name = htmlspecialchars($post['author_username']); // Default to username
     }
-    // Note: The following duplicate 'if' block for $author_name was present in the previous read_file output.
-    // It's harmless but redundant. I'm leaving it as is to match the surrounding context for the diff.
-    if (!empty($post['author_full_name'])) {
-        $author_name = htmlspecialchars($post['author_full_name']);
-    }
 
-    // Author bio and profile picture
+
+
+    // Author bio
     $author_bio = !empty($post['author_bio']) ? htmlspecialchars($post['author_bio']) : 'This author has not yet provided a bio.';
-    $author_profile_pic_url = BASE_URL . '/assets/img/blog/details/default-profile.jpg'; // Default author profile pic
-    if (!empty($post['author_profile_picture'])) {
-        $author_pic_path = str_replace('\\', '/', $post['author_profile_picture']); // PHP str_replace('\\', '/', ...) to replace single backslashes
-        if (strpos($author_pic_path, 'http') === 0) { // Check if it's a full URL
-            $author_profile_pic_url = $author_pic_path;
-        } else {
-            // Construct path relative to the web root
-            $web_relative_path = ltrim($author_pic_path, '/');
-            if (strpos($web_relative_path, 'uploads/profile_pictures/') === 0) {
-                // Path is already like 'uploads/profile_pictures/image.jpg'
-                $full_system_path = BASE_PATH . '/' . $web_relative_path;
-                $url_path = BASE_URL . '/' . $web_relative_path;
-            } else {
-                // Path might be just 'image.jpg', so prepend the uploads directory
-                $full_system_path = BASE_PATH . '/uploads/profile_pictures/' . basename($web_relative_path);
-                $url_path = BASE_URL . '/uploads/profile_pictures/' . basename($web_relative_path);
-            }
+    //An if statement to check if the author bio is empty, and if so, set a default message.
+    
 
-            if (file_exists($full_system_path)) {
-                $author_profile_pic_url = $url_path;
-            }
-            // If file_exists check fails, the default $author_profile_pic_url remains.
+
+    // Author profile picture ----- contains a relative path to the profile picture by definition
+        // If the author profile picture is not set, use a default image
+    
+        // Default author profile picture URL
+    $author_profile_pic_url = BASE_URL . '/assets/img/blog/details/default-profile.jpg'; // Default author profile pic
+    
+        // Check if the author profile picture is set and not empty
+    if (!empty($post['author_profile_picture'])) {
+        
+        // Normalize the path to use forward slashes
+        $author_pic_path = str_replace('\\', '/', $post['author_profile_picture']); // PHP str_replace('\\', '/', ...) to replace single backslashes
+        
+        // Construct path relative to the web root
+        $web_relative_path = ltrim($author_pic_path, '/');
+        
+        //The path is just the file name, so we need to prepend the uploads directory
+        // Construct the full system path and URL
+            // BASE_PATH is the absolute path to the project root directory
+            // BASE_URL is the base URL of the application
+        $full_system_path = BASE_PATH . '/uploads/profile_pictures/' . basename($web_relative_path);
+        $url_path = BASE_URL . '/uploads/profile_pictures/' . basename($web_relative_path);
+        
+        // Check if the file exists in the system
+        if (file_exists($full_system_path)) {
+            $author_profile_pic_url = $url_path;
+        }
+        else {
+            // Log the error if the file does not exist
+            error_log("Author profile picture not found: " . $full_system_path);
+            // Optionally, you can set a flash message or handle this case differently
         }
     }
 
-    // Fetch tags for this post
-    $tags = [];
-    try {
-        $stmt_tags = $pdo->prepare(
-            'SELECT t.name, t.slug ' .
-            'FROM tags t ' .
-            'JOIN post_tags pt ON t.id = pt.tag_id ' .
-            'WHERE pt.post_id = :post_id ' .
-            'ORDER BY t.name ASC'
-        );
-        $stmt_tags->execute([':post_id' => $post['id']]);
-        $tags = $stmt_tags->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        error_log("Error fetching tags: " . $e->getMessage());
-        // $tags will remain empty
-    }
 
-    // Fetch comments for this post
+    // Tag processing
+        // Initialize an empty array for processed tags
+    $processed_tags = [];
+        // Check if the post has tags and process them
+    if (isset($post['tags']) && !empty($post['tags'])) {
+        $raw_tags = explode(',', $post['tags']);
+        
+        //String processing to trim whitespace and remove empty tags
+        foreach ($raw_tags as $tag_name) {
+            $trimmed_tag = trim($tag_name);
+            if (!empty($trimmed_tag)) {
+                $processed_tags[] = $trimmed_tag;
+            }
+        }
+    }
+    // $processed_tags now contains an array of tag names
+
+
+    // Comment fetching
+        // Initialize comments array and count
     $comments = [];
     $comment_count = 0;
+        // Fetch comments for the post
     try {
+        // Standard SQL query to fetch comments for the post
         $stmt_comments = $pdo->prepare(
             'SELECT c.*, u.username AS comment_author_username, u.full_name AS comment_author_full_name, '.
             'COALESCE(u.profile_picture, \'assets/img/blog/details/default-profile.png\') AS comment_author_avatar ' . // Reverted to u.profile_picture
@@ -113,13 +144,13 @@ try {
 } catch (PDOException $e) {
     error_log("Error fetching blog post: " . $e->getMessage());
     set_flash_message('Error loading blog post. Please try again later.', 'danger');
-    redirect(BASE_URL . '/pages/static/blog.php');
+    /*redirect(BASE_URL . '/pages/static/blog.php');*/
 }
 
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 
-
+// Set the cover image URL, defaulting to a generic hero image if not set
 $cover_image_url = BASE_URL . '/assets/img/blog/details/details-hero.jpg'; // Default hero image
 if (!empty($post['cover_img'])) {
     $cover_image_url = BASE_URL . htmlspecialchars($post['cover_img']);
@@ -187,9 +218,9 @@ if (class_exists('Parsedown')) {
 
                         <div class="blog-details-tag-share mt-4">
                             <div class="tags">
-                                <?php if (!empty($tags)): ?>
-                                    <?php foreach ($tags as $tag): ?>
-                                        <a href="<?= BASE_URL ?>/pages/static/blog.php?tag=<?= htmlspecialchars($tag['slug']) ?>"><?= htmlspecialchars($tag['name']) ?></a>
+                                <?php if (!empty($processed_tags)): ?>
+                                    <?php foreach ($processed_tags as $tag): ?>
+                                        <a href="<?= BASE_URL ?>/pages/static/blog.php?tag=<?= htmlspecialchars(urlencode(strtolower(trim($tag)))) ?>"><?= htmlspecialchars($tag) ?></a>
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <span>No tags available for this post.</span>

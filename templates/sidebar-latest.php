@@ -4,7 +4,7 @@ $latest = get_latest_posts(5);
 ?>
 
 <div class="sidebar-box pt-3">
-  <h3 class="heading">Latest Blog</h3>
+  <h3 class="heading"  style="color:white">Latest Blogs</h3>
 
   <div id="latest-posts-container">
     <?php if ($latest): ?>
@@ -29,28 +29,7 @@ $latest = get_latest_posts(5);
         </div>
       <?php endforeach; ?>
     <?php else: ?>
-      <p class="small text-muted">Henüz yazı eklenmedi.</p>
+      <p class="small text-muted"> No posts have been added. </p>
     <?php endif; ?>
   </div> 
 </div>
-
-
-<script>
-(function () {
-  const wrap = document.getElementById('latest-posts-container');
-  if (!wrap) return;
-
-  async function reloadLatest() {
-    try {
-      const res = await fetch('<?= BASE_URL ?>/ajax/latest-posts.php');
-      if (!res.ok) throw new Error(res.status);
-      wrap.innerHTML = await res.text();
-    } catch (err) {
-      console.warn('Latest posts reload failed:', err);
-    }
-  }
-
-  reloadLatest();                 
-  setInterval(reloadLatest, 30000); 
-})();
-</script>
