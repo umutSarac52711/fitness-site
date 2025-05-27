@@ -33,7 +33,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
               <th>Date</th>
               <th>Weight</th>
               <th>Height</th>
-              <th>BMI</th>
               <th>Body Fat</th>
               <th>Notes</th>
               <th>Actions</th>
@@ -47,7 +46,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
                 <td><?= htmlspecialchars($log['date']) ?></td>
                 <td><?= is_null($log['weight']) ? '-' : $log['weight'] ?></td>
                 <td><?= is_null($log['height']) ? '-' : $log['height'] ?></td>
-                <td><?= is_null($log['bmi']) ? '-' : $log['bmi'] ?></td>
                 <td><?= is_null($log['body_fat']) ? '-' : $log['body_fat'] ?></td>
                 <td><?= htmlspecialchars($log['notes']) ?></td>
                 <td>

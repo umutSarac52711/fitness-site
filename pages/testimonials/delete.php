@@ -12,6 +12,17 @@ if (!$id) die('Invalid ID');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     check_csrf();
+    // Fetch photo path to delete file
+    $photoStmt = $pdo->prepare('SELECT photo FROM testimonials WHERE id = ?');
+    $photoStmt->execute([$id]);
+    $photoRow = $photoStmt->fetch(PDO::FETCH_ASSOC);
+    if ($photoRow && !empty($photoRow['photo'])) {
+        $fullPath = rtrim(BASE_PATH, '/') . $photoRow['photo'];
+        if (file_exists($fullPath)) {
+            @unlink($fullPath);
+        }
+    }
+    // Delete testimonial record
     $pdo->prepare('DELETE FROM testimonials WHERE id=?')->execute([$id]);
     header('Location: ' . BASE_URL . '/pages/testimonials/list.php');
     exit;

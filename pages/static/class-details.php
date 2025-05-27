@@ -19,7 +19,7 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
 
           
           <div class="cd-pic">
-            <img src="<?= BASE_URL ?>/assets/img/classes/class-details/class-detailsl.jpg" alt="">
+            <img src="<?= BASE_URL ?>/assets/img/classes/class-details/class-details.jpg" alt="">
           </div>
 
           

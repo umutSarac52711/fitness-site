@@ -3,7 +3,7 @@ require_once __DIR__ . '/../includes/functions.php';
 $trainers = get_trainers() ?? [];                     
 ?>
 
-<section class="trainer-section spad">
+<section class="team-section spad">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center mb-5">
@@ -17,7 +17,7 @@ $trainers = get_trainers() ?? [];
         <?php foreach ($trainers as $tr): ?>
           <?php
             // Determine the image URL for the trainer
-            $trainer_image_src = BASE_URL . '/assets/img/team/default-avatar.png'; // A sensible default image
+            $trainer_image_src = BASE_URL . '/assets/img/default-profile.jpg'; // A sensible default image
 
             if (!empty($tr['profile_picture'])) {
                 $pic_path = ltrim(str_replace('\\\\', '/', $tr['profile_picture']), '/'); // Normalize and remove leading slash

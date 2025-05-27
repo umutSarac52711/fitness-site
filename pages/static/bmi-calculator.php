@@ -50,28 +50,33 @@ require_once BASE_PATH . '/templates/breadcrumb.php';
                         <h2>CALCULATE YOUR BMI</h2>
                     </div>
                     <div class="chart-calculate-form">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                            viverra maecenas accumsan lacus vel facilisis.</p>
-                        <form action="#">
+                        <p>Enter your height and weight below to calculate your BMI. Age and sex are optional for standard BMI calculation but can be used for more specific assessments.</p>
+                        <form id="bmiForm">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Height / cm">
+                                    <input type="number" id="bmiHeight" placeholder="Height / cm" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Weight / kg">
+                                    <input type="number" id="bmiWeight" placeholder="Weight / kg" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Age">
+                                    <input type="number" id="bmiAge" placeholder="Age (optional)">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Sex">
+                                     <select id="bmiSex" class="form-control" style="height: 50px; margin-bottom: 20px; background: #252525; border: 1px solid #363636; color: #a9a9a9; padding-left: 20px;">
+                                        <option value="">Sex (optional)</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
                                 </div>
                                 <div class="col-lg-12">
-                                    <button type="submit">Calculate</button>
+                                    <button type="button" id="calculateBmiBtn">Calculate</button>  <!-- Removed onclick, ensured ID -->
                                 </div>
                             </div>
                         </form>
+                        <div id="bmiResult" class="mt-4" style="color: white;">
+                            <!-- BMI result will be displayed here -->
+                        </div>
                     </div>
                 </div>
             </div>

@@ -10,10 +10,7 @@
     <script src="<?= BASE_URL ?>/js/jquery.slicknav.js"></script>
     <script src="<?= BASE_URL ?>/js/owl.carousel.min.js"></script>
     <script src="<?= BASE_URL ?>/js/main.js"></script>
-    <script src="<?= BASE_URL ?>/js/app.js"></script>
-
-
-
+    
 </body>
 
 </html>

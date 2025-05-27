@@ -7,7 +7,7 @@ if (!is_logged_in()) {
     set_flash_message('You must be logged in to comment.', 'danger');
     // Try to redirect back to the post, or to login if slug isn't available for some reason
     $redirect_url = isset($_POST['post_slug_for_redirect']) ? 
-                    BASE_URL . '/pages/static/blog-details.php?slug=' . $_POST['post_slug_for_redirect'] . '#leave-comment-section' :
+                    BASE_URL . '/pages/blog/blog-details.php?slug=' . $_POST['post_slug_for_redirect'] . '#leave-comment-section' :
                     BASE_URL . '/pages/auth/login.php';
     redirect($redirect_url);
 }
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         set_flash_message('Comment body cannot be empty.', 'danger');
         // Redirect back to the post detail page with an anchor to the comment form
         $redirect_url = isset($_POST['post_slug_for_redirect']) ? 
-                        BASE_URL . '/pages/static/blog-details.php?slug=' . $_POST['post_slug_for_redirect'] . '#leave-comment-section' :
+                        BASE_URL . '/pages/blog/blog-details.php?slug=' . $_POST['post_slug_for_redirect'] . '#leave-comment-section' :
                         BASE_URL . '/pages/static/blog.php'; // Fallback if slug is missing
         redirect($redirect_url);
     }
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($comment_body)) {
         set_flash_message('Comment body cannot be empty after trimming.', 'danger');
-        redirect(BASE_URL . '/pages/static/blog-details.php?slug=' . $post_slug_for_redirect . '#leave-comment-section');
+        redirect(BASE_URL . '/pages/blog/blog-details.php?slug=' . $post_slug_for_redirect . '#leave-comment-section');
     }
 
     try {
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Redirect back to the post detail page with an anchor to the comments section
-    redirect(BASE_URL . '/pages/static/blog-details.php?slug=' . $post_slug_for_redirect . '#comments-section');
+    redirect(BASE_URL . '/pages/blog/blog-details.php?slug=' . $post_slug_for_redirect . '#comments-section');
 
 } else {
     // If not a POST request, redirect to blog page or homepage

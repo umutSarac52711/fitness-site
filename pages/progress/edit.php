@@ -17,15 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $date = $_POST['date'];
     $weight = $_POST['weight'] !== '' ? (float)$_POST['weight'] : null;
     $height = $_POST['height'] !== '' ? (float)$_POST['height'] : null;
-    $bmi = $_POST['bmi'] !== '' ? (float)$_POST['bmi'] : null;
     $body_fat = $_POST['body_fat'] !== '' ? (float)$_POST['body_fat'] : null;
     $notes = trim($_POST['notes']);
 
     $sql = 'UPDATE progress_logs
-              SET user_id=:u, date=:d, weight=:w, height=:h, bmi=:b, body_fat=:bf, notes=:n
+              SET user_id=:u, date=:d, weight=:w, height=:h, body_fat=:bf, notes=:n
             WHERE id=:id';
     $pdo->prepare($sql)->execute([
-        ':u'=>$user_id, ':d'=>$date, ':w'=>$weight, ':h'=>$height, ':b'=>$bmi, ':bf'=>$body_fat, ':n'=>$notes, ':id'=>$id
+        ':u'=>$user_id, ':d'=>$date, ':w'=>$weight, ':h'=>$height, ':bf'=>$body_fat, ':n'=>$notes, ':id'=>$id
     ]);
 
     header('Location: ' . BASE_URL . '/pages/progress/list.php');
@@ -65,10 +64,6 @@ require_once BASE_PATH . '/templates/header-admin.php';
   <div class="col-md-4">
     <label class="form-label">Height (cm)</label>
     <input name="height" type="number" step="0.01" class="form-control" value="<?= htmlspecialchars($log['height']) ?>">
-  </div>
-  <div class="col-md-4">
-    <label class="form-label">BMI</label>
-    <input name="bmi" type="number" step="0.01" class="form-control" value="<?= htmlspecialchars($log['bmi']) ?>">
   </div>
   <div class="col-md-4">
     <label class="form-label">Body Fat (%)</label>

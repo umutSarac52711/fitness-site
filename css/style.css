@@ -594,10 +594,10 @@ ol {
 }
 
 /*---------------------
-  ChoseUs Section
+  ChooseUs Section
 -----------------------*/
 
-.choseus-section {
+.chooseus-section {
 	background: #0a0a0a;
 	padding-bottom: 70px;
 }
@@ -1890,7 +1890,7 @@ ol {
 .sidebar-option .so-latest .latest-large .ll-text {
 	position: absolute;
 	left: 0;
-	bottom: 18px;
+	bottom: 0px;
 	width: 100%;
 	padding: 0 25px;
 }
@@ -2106,13 +2106,13 @@ ol {
 }
 
 .blog-item .bi-pic {
+	overflow: hidden;
 	float: left;
 }
 
 .blog-item .bi-pic img {
 	width: 360px;
 	height: 240px;
-	min-width: 100%;
 }
 
 .blog-item .bi-text {

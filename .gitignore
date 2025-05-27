@@ -1,5 +1,5 @@
 # PHP / general
-/vendor/
+# /vendor/
 /node_modules/
 *.log
 *.cache
@@ -17,4 +17,4 @@ Thumbs.db
 /config.php
 .env
 
-/uploads/
+# /uploads/

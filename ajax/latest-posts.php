@@ -1,77 +1,59 @@
 <?php
-// ajax/latest-posts.php  –  returns latest 5 posts as mini-cards
 require_once '../config.php';
-// require_once BASE_PATH . '/includes/functions.php'; // Already included via config.php
 header('Content-Type: text/html; charset=utf-8');
 
 try {
-    // Check if $pdo is available and a PDO instance
-    if (!isset($pdo) || !$pdo instanceof PDO) {
-        echo '<p class="text-danger"><strong>Debug:</strong> Database connection ($pdo) is not available or not a valid PDO object in ajax/latest-posts.php.</p>';
+    $result_array = get_latest_posts(5); // Fetches 5 posts for the structure
+    $all_posts = $result_array['data'] ?? [];
+
+    if (empty($all_posts)) {
+        echo '<p class="small text-muted">No posts found.</p>';
         exit;
     }
 
-    // Direct count check
-    try {
-        $countStmt = $pdo->query("SELECT COUNT(*) FROM posts");
-        $postCount = $countStmt->fetchColumn();
-        echo '<p class="small text-info"><strong>Debug (ajax/latest-posts.php):</strong> Direct count from `posts` table: ' . $postCount . '</p>';
-    } catch (PDOException $e) {
-        echo '<p class="text-danger"><strong>Debug (ajax/latest-posts.php):</strong> Error directly counting posts: ' . htmlspecialchars($e->getMessage()) . '</p>';
-    }
+    // Take the first post for the "latest-large" section
+    $first_post = array_shift($all_posts);
+    // The rest of the posts for the "latest-item" list
+    $remaining_posts = $all_posts;
+?>
 
-    $result_array = get_latest_posts(5);
-    $latest = $result_array['data'] ?? [];
-    $debug_messages = $result_array['debug'] ?? [];
-
-    if (!empty($debug_messages)) {
-        echo '<div class="alert alert-warning" style="font-size: 0.8em; max-height: 250px; overflow-y: auto; word-wrap: break-word;">';
-        echo '<strong>Debug Info from get_latest_posts():</strong><br>';
-        foreach ($debug_messages as $msg) {
-            echo $msg . "<br>";
-        }
-        echo '</div>';
-    }
-
-    if ($latest === []) {
-        echo '<p class="small text-muted">No posts found by get_latest_posts() (data array is empty).</p>';
-        // The var_dump and pdo->errorInfo check can be removed if the above debug is sufficient
-        // echo '<p class="small text-info"><strong>Debug:</strong> var_dump of get_latest_posts(5) data part:</p>';
-        // echo '<pre style="font-size: 0.8em; background: #f0f0f0; padding: 5px;">';
-        // var_dump($latest);
-        // echo '</pre>';
-        exit;
-    } elseif (!is_array($latest)) { 
-        echo '<p class="small text-danger"><strong>Error:</strong> get_latest_posts() did not return an array in the \'data\'.</p>';
-        exit;
-    }
-
-    foreach ($latest as $post): ?>
-      <div class="block-21 mb-4 d-flex">
-        <a class="blog-img mr-4"
-           href="<?= BASE_URL ?>/pages/blog/blog-details.php?slug=<?= urlencode($post['slug']) ?>"
-           style="background-image:url('<?= BASE_URL ?>/assets/img/blog/<?= htmlspecialchars($post['cover_img'] ?: 'blog_1.jpg') ?>');">
-        </a>
-        <div class="text">
-          <h4 class="heading-1 mb-1">
-            <a href="<?= BASE_URL ?>/pages/blog/blog-details.php?slug=<?= urlencode($post['slug']) ?>">
-              <?= htmlspecialchars($post['title']) ?>
-            </a>
-          </h4>
-          <div class="meta">
-            <div><span class="icon-calendar"></span>
-              <?= date('d M Y', strtotime($post['created_at'])) ?>
-            </div>
-          </div>
+<div class="so-latest">
+    <h5 class="title">Latest posts</h5>
+    <?php if ($first_post):
+        // Ensure comment_count is set, default to 0 if not
+        $comment_count = $first_post['comment_count'] ?? 0;
+    ?>
+    <div style="height:200px; background-image:url('<?= BASE_URL ?><?= htmlspecialchars($first_post['cover_img'] ?: '/assets/img/blog/default.webp') ?>')" class="latest-large set-bg">
+        <div class="ll-text" style="background-image:linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5));">
+            <h5><a href="<?= BASE_URL ?>/pages/blog/blog-details.php?slug=<?= urlencode($first_post['slug']) ?>"><?= htmlspecialchars($first_post['title']) ?></a></h5>
+            <ul>
+                <li style="color:azure"><?= date('M d, Y', strtotime($first_post['created_at'])) ?></li>
+                <li style="color:azure"><?= $comment_count ?> Comment<?= ($comment_count != 1 ? 's' : '') ?></li>
+            </ul>
         </div>
-      </div>
-    <?php endforeach;
+    </div>
+    <?php endif; ?>
 
-} catch (Throwable $e) { // Catch any throwable, including PDOException and Error
-    // Ensure errors are displayed for debugging purposes when accessed via AJAX
-    // In a production environment, you might log this error and show a generic message.
-    echo "<p class=\"text-danger\">Error loading latest posts:</p>";
+    <?php foreach ($remaining_posts as $post):
+        // Ensure comment_count is set, default to 0 if not
+        $comment_count_loop = $post['comment_count'] ?? 0;
+    ?>
+    <div class="latest-item">
+        <div class="li-pic">
+            <img width="105" height="72" src="<?= BASE_URL ?><?= htmlspecialchars($post['cover_img'] ?: '/assets/img/blog/default.webp') ?>" alt="<?= htmlspecialchars($post['title']) ?>">
+        </div>
+        <div class="li-text">
+            <h6><a href="<?= BASE_URL ?>/pages/blog/blog-details.php?slug=<?= urlencode($post['slug']) ?>"><?= htmlspecialchars($post['title']) ?></a></h6>
+            <span class="li-time"><?= date('M d, Y', strtotime($post['created_at'])) ?></span>
+            <span class="li-comment"><i class="fa fa-comments"></i> <?= $comment_count_loop ?></span>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+<?php
+
+} catch (Throwable $e) {
+    // In a production environment, log this error and show a generic message.
+    echo "<p class=\"text-danger\">Error loading latest posts content.</p>";
     echo "<pre class=\"text-danger\">" . htmlspecialchars($e->getMessage()) . "</pre>";
-    // Optionally, include more details for debugging if not in production:
-    // echo "<pre class=\\"text-danger\\">" . htmlspecialchars($e->getTraceAsString()) . "</pre>";
 }

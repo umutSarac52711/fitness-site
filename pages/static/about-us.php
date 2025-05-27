@@ -4,11 +4,11 @@ require_once '../../config.php';
 require_once BASE_PATH . '/templates/file-start.php';
 require_once BASE_PATH . '/templates/header.php';
 require_once BASE_PATH . '/templates/breadcrumb.php';
-include BASE_PATH . '/templates/trainers-section.php';
+/*include BASE_PATH . '/templates/trainers-section.php';*/
 ?>
 
 <!-- ChooseUs Section Begin -->
-    <section class="choseus-section spad" id="ChooseUs">
+    <section class="chooseus-section spad" id="ChooseUs">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -108,75 +108,8 @@ include BASE_PATH . '/templates/trainers-section.php';
 </section>
 <!-- About Us Section End -->
 
-<!-- Team Section Begin -->
-<section class="team-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="team-title">
-                    <div class="section-title">
-                        <span>Our Team</span>
-                        <h2>TRAIN WITH EXPERTS</h2>
-                    </div>
-                    <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="ts-slider owl-carousel">
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="<?= BASE_URL ?>/assets/img/team/team-1.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="<?= BASE_URL ?>/assets/img/team/team-2.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="<?= BASE_URL ?>/assets/img/team/team-3.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="<?= BASE_URL ?>/assets/img/team/team-4.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="<?= BASE_URL ?>/assets/img/team/team-5.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="<?= BASE_URL ?>/assets/img/team/team-6.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Team Section End -->
+<?php include BASE_PATH . '/templates/trainers-section.php'; ?>
+
 
 <!-- Banner Section Begin -->
 <section class="banner-section set-bg" data-setbg="<?= BASE_URL ?>/assets/img/banner-bg.jpg">
@@ -184,9 +117,9 @@ include BASE_PATH . '/templates/trainers-section.php';
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="bs-text">
-                    <h2>registration now to get more deals</h2>
-                    <div class="bt-tips">Where health, beauty and fitness meet.</div>
-                    <a href="#" class="primary-btn  btn-normal">Appointment</a>
+                    <h2>Elevate Your Student Wellness</h2>
+                    <div class="bt-tips">Your on-campus hub for health and peak performance.</div>
+                    <a href="<?= BASE_URL ?>/pages/memberships.php" class="primary-btn btn-normal">Explore Memberships</a>
                 </div>
             </div>
         </div>
@@ -194,6 +127,20 @@ include BASE_PATH . '/templates/trainers-section.php';
 </section>
 <!-- Banner Section End -->
 
+<?php
+// Fetch approved testimonials
+// global $pdo; // Should be available from config.php included at the top
+$testimonials_data = []; // Initialize
+try {
+    // Assuming \'approved\' is the status for publicly visible testimonials
+    // Fetches the 3 most recent approved testimonials
+    $testimonial_stmt = $pdo->prepare("SELECT name, quote, rating, photo FROM testimonials WHERE status = 'approved' ORDER BY created_at DESC LIMIT 3");
+    $testimonial_stmt->execute();
+    $testimonials_data = $testimonial_stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    set_flash_message("Error fetching testimonials for about-us page: " . $e->getMessage(), "danger");
+}
+?>
 <!-- Testimonial Section Begin -->
 <section class="testimonial-section spad">
     <div class="container">
@@ -205,51 +152,59 @@ include BASE_PATH . '/templates/trainers-section.php';
                 </div>
             </div>
         </div>
+        <?php display_flash_message(); ?>
         <div class="ts_slider owl-carousel">
-            <div class="ts_item">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="ti_pic">
-                            <img src="<?= BASE_URL ?>/assets/img/testimonial/testimonial-1.jpg" alt="">
-                        </div>
-                        <div class="ti_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt<br /> ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                                gravida. Risus commodo<br /> viverra maecenas accumsan lacus vel facilisis.</p>
-                            <h5>Marshmello Gomez</h5>
-                            <div class="tt-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+            <?php if (!empty($testimonials_data)): ?>
+                <?php foreach ($testimonials_data as $testimonial_item): ?>
+                    <?php
+                    // Determine image URL for each testimonial
+                    $current_image_url = BASE_URL . '/assets/img/testimonial/testimonial-1.jpg'; // Default image
+                    if (!empty($testimonial_item['photo'])) {
+                        $image_path = ltrim($testimonial_item['photo'], '/'); // Normalize path
+                        if (file_exists(BASE_PATH . '/' . $image_path)) { // Check against absolute server path
+                            $current_image_url = BASE_URL . '/' . htmlspecialchars($testimonial_item['photo']);
+                        } else {
+                            // Optionally log or set a flash message if a specific testimonial's image is missing
+                            error_log("Testimonial image not found for " . htmlspecialchars($testimonial_item['name']) . ": " . BASE_PATH . $image_path);
+                            // You might want to avoid setting a flash message for each missing image in a loop
+                            // set_flash_message("Image for testimonial '" . htmlspecialchars($testimonial_item['name']) . "' not found.", "warning");
+                        }
+                    }
+                    ?>
+                    <div class="ts_item">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <div class="ti_pic">
+                                    <img src="<?= $current_image_url ?>" alt="Testimonial from <?= htmlspecialchars($testimonial_item['name']) ?>">
+                                </div>
+                                <div class="ti_text">
+                                    <p><?= nl2br(htmlspecialchars($testimonial_item['quote'])) ?></p>
+                                    <h5><?= htmlspecialchars($testimonial_item['name']) ?></h5>
+                                    <div class="tt-rating">
+                                        <?php 
+                                        $rating = (int)$testimonial_item['rating'];
+                                        for ($i = 1; $i <= 5; $i++): ?>
+                                            <?php if ($i <= $rating): ?>
+                                                <i class="fa fa-star"></i>
+                                            <?php else: ?>
+                                                <i class="fa fa-star-o"></i> <?php // Using fa-star-o for empty star rating representation ?>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="ts_item">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="ti_pic">
-                            <img src="<?= BASE_URL ?>/assets/img/testimonial/testimonial-2.jpg" alt="">
-                        </div>
-                        <div class="ti_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt<br /> ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
-                                gravida. Risus commodo<br /> viverra maecenas accumsan lacus vel facilisis.</p>
-                            <h5>Marshmello Gomez</h5>
-                            <div class="tt-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="ts_item">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <p>No testimonials to display at the moment. Check back soon!</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

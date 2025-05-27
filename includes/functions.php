@@ -27,9 +27,12 @@ function get_latest_posts(int $limit = 5): array
         return ['data' => [], 'debug' => $debug_info];
     }
 
-    $sql = "SELECT id, title, slug, created_at, cover_img 
-            FROM posts 
-            ORDER BY created_at DESC
+    // Modified SQL to include comment_count
+    $sql = "SELECT p.id, p.title, p.slug, p.created_at, p.cover_img, COUNT(c.id) AS comment_count
+            FROM posts p
+            LEFT JOIN comments c ON p.id = c.post_id
+            GROUP BY p.id, p.title, p.slug, p.created_at, p.cover_img
+            ORDER BY p.created_at DESC
             LIMIT :lim";
     $debug_info[] = "SQL: " . htmlspecialchars($sql);
 
@@ -117,9 +120,10 @@ function display_flash_message() {
         foreach ($_SESSION['flash_messages'] as $flash_message) {
             $alert_type = htmlspecialchars($flash_message['type']);
             $message = htmlspecialchars($flash_message['message']);
+            // Changed data-bs-dismiss to data-dismiss for broader compatibility (e.g., Bootstrap 4)
             echo "<div class='alert alert-{$alert_type} alert-dismissible fade show' role='alert'>
                     {$message}
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    <button type='button' class='btn-close' data-dismiss='alert' aria-label='Close'></button>
                   </div>";
         }
         unset($_SESSION['flash_messages']); // Clear messages after displaying
@@ -158,3 +162,23 @@ function get_trainers(): array
 }
 
 
+function file_upload_error_message($error_code) {
+    switch ($error_code) {
+        case UPLOAD_ERR_INI_SIZE:
+            return 'The uploaded file exceeds the upload_max_filesize directive in php.ini.';
+        case UPLOAD_ERR_FORM_SIZE:
+            return 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.';
+        case UPLOAD_ERR_PARTIAL:
+            return 'The uploaded file was only partially uploaded.';
+        case UPLOAD_ERR_NO_FILE:
+            return 'No file was uploaded.';
+        case UPLOAD_ERR_NO_TMP_DIR:
+            return 'Missing a temporary folder for uploads.';
+        case UPLOAD_ERR_CANT_WRITE:
+            return 'Failed to write file to disk. Check permissions.';
+        case UPLOAD_ERR_EXTENSION:
+            return 'A PHP extension stopped the file upload.';
+        default:
+            return 'Unknown upload error.';
+    }
+}
